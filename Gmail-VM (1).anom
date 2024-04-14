@@ -1,0 +1,82 @@
+[SETTINGS]
+{
+  "Name": "Gmail VM",
+  "SuggestedBots": 200,
+  "MaxCPM": 0,
+  "LastModified": "2021-03-10T00:12:08.4769795+03:00",
+  "AdditionalInfo": "",
+  "Author": "",
+  "Version": "1.4.4 [Anomaly]",
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "EncodeData": false,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "Base64": "",
+  "Grayscale": false,
+  "RemoveLines": false,
+  "RemoveNoise": false,
+  "Dilate": false,
+  "Threshold": 1.0,
+  "DiffKeep": 0.0,
+  "DiffHide": 0.0,
+  "Saturate": false,
+  "Saturation": 0.0,
+  "Transparent": false,
+  "Contour": false,
+  "OnlyShow": false,
+  "ContrastGamma": false,
+  "Contrast": 1.0,
+  "Gamma": 1.0,
+  "Brightness": 1.0,
+  "RemoveLinesMin": 0,
+  "RemoveLinesMax": 0,
+  "Crop": false,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "DisableNotifications": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": ""
+}
+
+[SCRIPT]
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Failure AND 
+    KEY "<USER>" DoesNotContain "@gmail" 
+    KEY "<SOURCE>" DoesNotContain "@Gmail" 
+
+FUNCTION Replace "@.*" "" UseRegex=TRUE "<USER>" -> VAR "US" 
+
+REQUEST POST "https://accounts.google.com/_/signup/webusernameavailability?hl=en&_reqid=297&rt=j" 
+  CONTENT "hl=en&flowName=GlifWebSignIn&flowEntry=SignUp&continue=https://accounts.google.com/ManageAccount?nc=1&f.req=[\"AEThLlxGBX7TtxKojz922UkWTWfsxipxwKYX-fnwVhJeaBbwdoqNctxvAnHHb3MFDXR1jAu5icK5e-XOqfvDyTU7WSFRAEMS7MN0UD4p0UuxL8i330U_sq8TmPER1iyzSyvQ3vmTNNxACXsdYCaiaMcTRjMZm_qKMVbJKCCe0usBTmzXxHFFGdiyuF6ISSCTg6mK7LUYiUoWdyrz73yX0_PCwtl7bkv_-Q\",\"fgdg\",\"dfgdfg\",\"<US>\",true]&at=AFoagUXH2I-44YEe9Cl4WdcnZRV_bJ3HWA:1615323890333&azt=AFoagUW9p4i4MiCyUlD0izJtlOl6Rm5aKA:1615323890334&cookiesDisabled=false&deviceinfo=[null,null,null,[],null,\"KW\",null,null,[],\"GlifWebSignIn\",null,[null,null,[],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,[5,\"77185425430.apps.googleusercontent.com\",[\"https://www.google.com/accounts/OAuthLogin\"],null,null,\"9e5cb902-7109-4338-97e8-6cd859476d8b\",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,5,null,null,[],null,null,null,[],[]],null,null,null,null,null,null,[],null,null,null,[],[]],null,null,null,null,1,null,false]&gmscoreversion=undefined&" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "google-accounts-xsrf: 1" 
+  HEADER "origin: https://accounts.google.com" 
+  HEADER "referer: https://accounts.google.com/signup/v2/webcreateaccount?hl=en&flowName=GlifWebSignIn&flowEntry=SignUp" 
+  HEADER "sec-fetch-dest: empty" 
+  HEADER "sec-fetch-mode: cors" 
+  HEADER "sec-fetch-site: same-origin" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36" 
+  HEADER "x-chrome-id-consistency-request: version=1,client_id=77185425430.apps.googleusercontent.com,device_id=9e5cb902-7109-4338-97e8-6cd859476d8b,signin_mode=all_accounts,signout_mode=show_confirmation" 
+  HEADER ": scheme: https" 
+  HEADER "accept: */*" 
+  HEADER "accept-encoding: gzip, deflate, br" 
+  HEADER "accept-language: en-US,en;q=0.9" 
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "gf.wuar\",1," 
+  KEYCHAIN Failure OR 
+    KEY "gf.wuar\",3," 
+    KEY "gf.wuar\",2," 
+

